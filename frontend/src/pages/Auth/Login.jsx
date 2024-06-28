@@ -49,7 +49,7 @@ const Login = () => {
             <div className="my-[2rem]">
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-white"
+                className="block text-sm font-medium text-black mb-1 ml-1"
               >
                 Email Address
               </label>
@@ -63,10 +63,10 @@ const Login = () => {
               />
             </div>
 
-            <div className="mb-4">
+            <div className="mb-10">
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-white"
+                className="block text-sm font-medium text-black mb-1 ml-1"
               >
                 Password
               </label>
@@ -80,27 +80,27 @@ const Login = () => {
               />
             </div>
 
-            <button
-              disabled={isLoading}
-              type="submit"
-              className="bg-pink-500 text-white px-4 py-2 rounded cursor-pointer my-[1rem]"
-            >
-              {isLoading ? "Signing In..." : "Sign In"}
-            </button>
-
-            {isLoading && <Loader />}
+                <button
+                disabled={isLoading}
+                type="submit"
+                className="bg-green-500 text-white px-5 py-2 rounded cursor-pointer my-[0rem] flex w-[100%] justify-center hover:text-green-950"
+              >
+                {isLoading ? "Signing In..." : "Sign In"}
+              </button>
+              {isLoading && <Loader />}
+              
           </form>
 
-          <div className="mt-4">
-            <p className="text-white">
-              New Customer?{" "}
+          <div className="mt-6 flex justify-center text-[1.1rem]">
+              <p>
+                New customer? &nbsp;
+              </p>
               <Link
                 to={redirect ? `/register?redirect=${redirect}` : "/register"}
-                className="text-pink-500 hover:underline"
+                className="text-green-500 hover:underline"
               >
                 Register
               </Link>
-            </p>
           </div>
         </div>
       </section>
