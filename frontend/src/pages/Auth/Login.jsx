@@ -41,15 +41,15 @@ const Login = () => {
 
   return (
     <div>
-      <section className="pl-[10rem] flex flex-wrap">
+      <section className="pl-[0rem] mt-[3rem] flex flex-wrap justify-center">
         <div className="mr-[4rem] mt-[5rem]">
-          <h1 className="text-2xl font-semibold mb-4">Sign In</h1>
+          <h1 className="text-4xl font-semibold mb-10 text-center">LOGIN</h1>
 
           <form onSubmit={submitHandler} className="container w-[40rem]">
             <div className="my-[2rem]">
               <label
                 htmlFor="email"
-                className="block text-sm font-medium text-black mb-1 ml-1"
+                className="block text-base font-semibold mb-1 ml-0.5"
               >
                 Email Address
               </label>
@@ -66,7 +66,7 @@ const Login = () => {
             <div className="mb-10">
               <label
                 htmlFor="password"
-                className="block text-sm font-medium text-black mb-1 ml-1"
+                className="block text-base font-semibold mb-1 ml-0.5"
               >
                 Password
               </label>
@@ -83,7 +83,7 @@ const Login = () => {
                 <button
                 disabled={isLoading}
                 type="submit"
-                className="bg-green-500 text-white px-5 py-2 rounded cursor-pointer my-[0rem] flex w-[100%] justify-center hover:text-green-950"
+                className="bg-green-500 text-white px-5 py-2 rounded cursor-pointer my-[0rem] flex w-[100%] justify-center hover:bg-green-600 active:bg-green-900"
               >
                 {isLoading ? "Signing In..." : "Sign In"}
               </button>

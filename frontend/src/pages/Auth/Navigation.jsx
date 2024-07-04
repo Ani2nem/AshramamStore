@@ -38,32 +38,30 @@ const Navigation = () => {
   return (
     <div
       style={{ zIndex: 9999 }}
-      className={`${
-        showSidebar ? "hidden" : "flex"
-      } xl:flex lg:flex md:hidden sm:hidden flex-col justify-between p-4 text-black bg-[#ffbf00] w-[4%] hover:w-[15%] h-[100vh]  fixed `}
+      className="flex justify-between p-4 text-black bg-[#FF671F] w-[100%] h-[7%] fixed"
       id="navigation-container"
     >
-      <div className="flex flex-col justify-center space-y-4">
+      <div className="flex">
         <Link
           to="/"
-          className="flex items-center transition-transform transform hover:translate-x-2"
+          className="flex items-center mr-10 hover:text-white"
         >
-          <AiOutlineHome className="mr-2 mt-[3rem]" size={28} />
-          <span className="hidden nav-item-name mt-[3rem]">HOME</span>{" "}
+          <AiOutlineHome className="mr-2 mt-[0rem]" size={20} />
+          <span className="nav-item-name mt-[0rem]">HOME</span>{" "}
         </Link>
 
         <Link
           to="/shop"
-          className="flex items-center transition-transform transform hover:translate-x-2"
+          className="flex items-center mr-10 hover:text-white"
         >
-          <AiOutlineShopping className="mr-2 mt-[3rem]" size={28} />
-          <span className="hidden nav-item-name mt-[3rem]">SHOP</span>{" "}
+          <AiOutlineShopping className="mr-2 mt-[0rem]" size={20} />
+          <span className="nav-item-name mt-[0rem]">SHOP</span>{" "}
         </Link>
 
-        <Link to="/cart" className="flex items-center transition-transform transform hover:translate-x-2">
+        <Link to="/cart" className="flex items-center mr-10 hover:text-white">
           
-            <AiOutlineShoppingCart className="mr-2 mt-[3rem]" size={28} />
-            <span className="hidden nav-item-name mt-[3rem]">CART</span>{" "}
+            <AiOutlineShoppingCart className="mr-2 mt-[0rem]" size={20} />
+            <span className="nav-item-name text-base mt-[0rem]">CART</span>{" "}
 
           <div className="absolute top-9">
             {cartItems.length > 0 && (
@@ -76,16 +74,16 @@ const Navigation = () => {
           </div>
         </Link>
 
-        <Link to="/favorite" className="flex items-center transition-transform transform hover:translate-x-2">
-            <FaHeart className="mt-[3rem] mr-2" size={20} />
-            <span className="hidden nav-item-name mt-[3rem]">
+        <Link to="/favorite" className="flex items-center mr-10 hover:text-white">
+            <FaHeart className="mt-[0rem] mr-2" size={20} />
+            <span className="nav-item-name mt-[0rem]">
               FAVORITES
             </span>{" "}
             <FavoritesCount />
         </Link>
       </div>
 
-      <div className="relative">
+      <div className="flex justify-end  items-center w-[100%]">
         <button
           onClick={toggleDropdown}
           className="flex items-center text-gray-800 focus:outline-none"
@@ -117,7 +115,7 @@ const Navigation = () => {
 
         {dropdownOpen && userInfo && (
           <ul
-            className={`absolute right-0 mt-2 mr-14 space-y-2 bg-white text-gray-600 ${
+            className={`absolute right-0 mt-[0rem] mr-14 space-y-2 bg-white text-gray-600 ${
               !userInfo.isAdmin ? "-top-20" : "-top-80"
             } `}
           >
@@ -182,23 +180,23 @@ const Navigation = () => {
           </ul>
         )}
         {!userInfo && (
-          <ul>
+          <ul className="flex justify-center mt-[0rem]">
             <li>
               <Link
                 to="/login"
-                className="flex items-center mt-5 transition-transform transform hover:translate-x-2"
+                className="flex items-center mr-10 hover:text-white"
               >
-                <AiOutlineLogin className="mr-2 mt-[4px]" size={28} />
-                <span className="hidden nav-item-name">LOGIN</span>
+                <AiOutlineLogin className="mr-2" size={20} />
+                <span className="nav-item-name ">LOGIN</span>
               </Link>
             </li>
             <li>
               <Link
                 to="/register"
-                className="flex items-center mt-5 transition-transform transform hover:translate-x-2"
+                className="flex items-center hover:text-white"
               >
-                <AiOutlineUserAdd className="mr-2 mt-[4px]" size={28} />
-                <span className="hidden nav-item-name">REGISTER</span>
+                <AiOutlineUserAdd className="mr-2" size={20} />
+                <span className="nav-item-name">REGISTER</span>
               </Link>
             </li>
           </ul>

@@ -48,15 +48,15 @@ const Register = () => {
   };
 
   return (
-    <section className="pl-[10rem] flex flex-wrap">
+    <section className="pl-[0rem] pt-[1rem] flex flex-wrap justify-center">
       <div className="mr-[4rem] mt-[5rem]">
-        <h1 className="text-2xl font-semibold mb-4">Register</h1>
+        <h1 className="text-4xl font-semibold mb-5 text-center">REGISTER</h1>
 
         <form onSubmit={submitHandler} className="container w-[40rem]">
           <div className="my-[2rem]">
             <label
               htmlFor="name"
-              className="block text-sm font-medium  text-black mb-1 ml-1"
+              className="block text-base font-semibold mb-1 ml-0.5"
             >
               Name
             </label>
@@ -73,7 +73,7 @@ const Register = () => {
           <div className="my-[2rem]">
             <label
               htmlFor="email"
-              className="block text-sm font-medium  text-black mb-1 ml-1"
+              className="block text-base font-semibold mb-1 ml-0.5"
             >
               Email Address
             </label>
@@ -90,7 +90,7 @@ const Register = () => {
           <div className="my-[2rem]">
             <label
               htmlFor="password"
-              className="block text-sm font-medium  text-black mb-1 ml-1"
+              className="block text-base font-semibold mb-1 ml-0.5"
             >
               Password
             </label>
@@ -107,7 +107,7 @@ const Register = () => {
           <div className="my-[2rem]">
             <label
               htmlFor="confirmPassword"
-              className="block text-sm font-medium  text-black mb-1 ml-1"
+              className="block text-base font-semibold mb-1 ml-0.5"
             >
               Confirm Password
             </label>
@@ -124,7 +124,7 @@ const Register = () => {
           <button
             disabled={isLoading}
             type="submit"
-            className="bg-green-500 text-white px-4 py-2 rounded cursor-pointer my-[1rem] hover:text-green-950 flex w-[100%] justify-center"
+            className="bg-green-500 text-white px-4 py-2 rounded cursor-pointer my-[1rem] hover:bg-green-600 active:bg-green-900  flex w-[100%] justify-center"
           >
             {isLoading ? "Registering..." : "Register"}
           </button>
