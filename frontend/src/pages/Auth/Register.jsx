@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import { useRegisterMutation } from "../../redux/api/usersApiSlice";
 import { setCredentials } from "../../redux/features/auth/authSlice";
-import { toast } from "react-toastify";
+import { Toaster, toast } from 'sonner'
 
 const Register = () => {
   const [username, setName] = useState("");
@@ -38,8 +38,8 @@ const Register = () => {
       try {
         const res = await register({ username, email, password }).unwrap();
         dispatch(setCredentials({ ...res }));
-        navigate(redirect);
         toast.success("User successfully registered");
+        navigate(redirect);
       } catch (err) {
         console.log(err);
         toast.error(err.data.message);
@@ -49,6 +49,10 @@ const Register = () => {
 
   return (
     <section className="pl-[0rem] pt-[1rem] flex flex-wrap justify-center">
+      <div className="mt-[6rem]">
+      <Toaster richColors  position="top-center" />
+      </div>
+       
       <div className="mr-[4rem] mt-[5rem]">
         <h1 className="text-4xl font-semibold mb-5 text-center">REGISTER</h1>
 
@@ -128,8 +132,6 @@ const Register = () => {
           >
             {isLoading ? "Registering..." : "Register"}
           </button>
-
-          {isLoading && <Loader />}
         </form>
 
         <div className="mt-5 flex justify-center">

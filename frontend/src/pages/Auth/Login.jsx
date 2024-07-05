@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import { useLoginMutation } from "../../redux/api/usersApiSlice";
 import { setCredentials } from "../../redux/features/auth/authSlice";
-import { toast } from "react-toastify";
+import { Toaster, toast } from 'sonner'
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -29,6 +29,10 @@ const Login = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    if(!email || !password){
+      toast.warning("Please enter all fields!");
+      return
+    }
     try {
       const res = await login({ email, password }).unwrap();
       console.log(res);
@@ -43,6 +47,7 @@ const Login = () => {
     <div>
       <section className="pl-[0rem] mt-[3rem] flex flex-wrap justify-center">
         <div className="mr-[4rem] mt-[5rem]">
+        <Toaster richColors position="top-center"/>
           <h1 className="text-4xl font-semibold mb-10 text-center">LOGIN</h1>
 
           <form onSubmit={submitHandler} className="container w-[40rem]">
@@ -56,7 +61,7 @@ const Login = () => {
               <input
                 type="email"
                 id="email"
-                className="mt-1 p-2 border rounded w-full  focus:text-black"
+                className="mt-1 p-2 border rounded w-full  text-black"
                 placeholder="Enter email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
@@ -73,7 +78,7 @@ const Login = () => {
               <input
                 type="password"
                 id="password"
-                className="mt-1 p-2 border rounded w-full focus:text-black"
+                className="mt-1 p-2 border rounded w-full text-black"
                 placeholder="Enter password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
