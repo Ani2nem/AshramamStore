@@ -43,27 +43,27 @@ const createUser = asyncHandler(async (req, res) => {
 
 // authenticate user
 const loginUser = asyncHandler(async (req, res) => {
-      const {email, password} = req.body
-      
-      const existingUser = await User.findOne({email})
+  const { email, password } = req.body;
 
-      if (existingUser){
-        const isPasswordValid = await bcrypt.compare(password, existingUser.password)
+  const existingUser = await User.findOne({ email });
 
-        if (isPasswordValid){
-          createToken(res, existingUser._id);
-          res.status(201).json({
-            _id: existingUser._id,
-            username: existingUser.username,
-            email: existingUser.email,
-            isAdmin: existingUser.isAdmin,
-          });
-          return;
-        }
-      }
+  if (existingUser) {
+    const isPasswordValid = await bcrypt.compare(password, existingUser.password);
 
+    if (isPasswordValid) {
+      createToken(res, existingUser._id);
+      return res.status(200).json({
+        _id: existingUser._id,
+        username: existingUser.username,
+        email: existingUser.email,
+        isAdmin: existingUser.isAdmin,
+      });
+    }
+  }
 
+  res.status(401).json({ message: 'Invalid email or password' });
 });
+
 
 
 // logout user
@@ -159,32 +159,33 @@ const getUserById = asyncHandler(async (req, res) => {
 
 
 const updateUserById = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.params.id)
+  const user = await User.findById(req.params.id);
 
-
-  if (user){
-    if (User.findById(req.body.email)){
-      res.status(404)
-      throw new Error("Email Already Taken!");
+  if (user) {
+    const existingUser = await User.findOne({ email: req.body.email });
+    if (existingUser && existingUser._id.toString() !== user._id.toString()) {
+      res.status(400);
+      throw new Error("Email already taken!");
     }
-    user.username = req.body.username || user.username
-    user.email = req.body.email || user.email
-    user.isAdmin = Boolean(req.body.isAdmin)
 
+    user.username = req.body.username || user.username;
+    user.email = req.body.email || user.email;
+    user.isAdmin = req.body.isAdmin !== undefined ? req.body.isAdmin : user.isAdmin;
 
-    const updatedUser = await user.save()
+    const updatedUser = await user.save();
 
     res.json({
       _id: updatedUser._id,
       username: updatedUser.username,
       email: updatedUser.email,
       isAdmin: updatedUser.isAdmin,
-    })
+    });
   } else {
-    res.status(404)
-    throw new Error("User Not Found");
+    res.status(404);
+    throw new Error("User not found.");
   }
-})
+});
+
 
 
 

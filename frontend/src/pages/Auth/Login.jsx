@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import Loader from "../../components/Loader";
 import { useLoginMutation } from "../../redux/api/usersApiSlice";
 import { setCredentials } from "../../redux/features/auth/authSlice";
-import { Toaster, toast } from 'sonner'
+import { Toaster, toast } from 'sonner';
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -29,19 +29,18 @@ const Login = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    if(!email || !password){
+    
+    if (!email || !password) {
       toast.warning("Please enter all fields!");
-      return
+      return;
     }
     
     try {
       const res = await login({ email, password }).unwrap();
-      console.log(res);
       dispatch(setCredentials({ ...res }));
       navigate(redirect);
     } catch (err) {
-      toast.error(err?.data?.message || err.error);
-      return
+      toast.error(err?.data?.message || err.error || "Invalid credentials");
     }
   };
 
@@ -49,7 +48,7 @@ const Login = () => {
     <div>
       <section className="pl-[0rem] mt-[3rem] flex flex-wrap justify-center">
         <div className="mr-[4rem] mt-[5rem]">
-        <Toaster richColors position="top-center"/>
+          <Toaster richColors position="top-center" />
           <h1 className="text-4xl font-semibold mb-10 text-center">LOGIN</h1>
 
           <form onSubmit={submitHandler} className="container w-[40rem]">
@@ -87,27 +86,26 @@ const Login = () => {
               />
             </div>
 
-                <button
-                disabled={isLoading}
-                type="submit"
-                className="bg-green-500 text-white px-5 py-2 rounded cursor-pointer my-[0rem] flex w-[100%] justify-center hover:bg-green-600 active:bg-green-900"
-              >
-                {isLoading ? "Signing In..." : "Sign In"}
-              </button>
-              {isLoading && <Loader />}
-              
+            <button
+              disabled={isLoading}
+              type="submit"
+              className="bg-green-500 text-white px-5 py-2 rounded cursor-pointer my-[0rem] flex w-[100%] justify-center hover:bg-green-600 active:bg-green-900"
+            >
+              {isLoading ? "Signing In..." : "Sign In"}
+            </button>
+            {isLoading && <Loader />}
           </form>
 
           <div className="mt-6 flex justify-center text-[1.1rem]">
-              <p>
-                New customer? &nbsp;
-              </p>
-              <Link
-                to={redirect ? `/register?redirect=${redirect}` : "/register"}
-                className="text-green-500 hover:underline"
-              >
-                Register
-              </Link>
+            <p>
+              New customer? &nbsp;
+            </p>
+            <Link
+              to={redirect ? `/register?redirect=${redirect}` : "/register"}
+              className="text-green-500 hover:underline"
+            >
+              Register
+            </Link>
           </div>
         </div>
       </section>
