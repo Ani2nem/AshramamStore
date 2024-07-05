@@ -33,6 +33,7 @@ const Login = () => {
       toast.warning("Please enter all fields!");
       return
     }
+    
     try {
       const res = await login({ email, password }).unwrap();
       console.log(res);
@@ -40,6 +41,7 @@ const Login = () => {
       navigate(redirect);
     } catch (err) {
       toast.error(err?.data?.message || err.error);
+      return
     }
   };
 
@@ -64,7 +66,7 @@ const Login = () => {
                 className="mt-1 p-2 border rounded w-full  text-black"
                 placeholder="Enter email"
                 value={email}
-                onChange={(e) => setEmail(e.target.value)}
+                onChange={(e) => setEmail(e.target.value.toLowerCase())}
               />
             </div>
 

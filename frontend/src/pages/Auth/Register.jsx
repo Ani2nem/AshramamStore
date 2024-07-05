@@ -87,7 +87,7 @@ const Register = () => {
               className="mt-1 p-2 border rounded w-full text-black"
               placeholder="Enter email"
               value={email}
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e.target.value.toLowerCase())}
             />
           </div>
 

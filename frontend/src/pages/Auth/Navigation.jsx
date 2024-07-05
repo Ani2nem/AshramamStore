@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef  } from "react";
 import {AiOutlineHome,AiOutlineShopping,AiOutlineLogin,AiOutlineUserAdd,AiOutlineShoppingCart} from "react-icons/ai";
 import { FaHeart } from "react-icons/fa";
 import { Link } from "react-router-dom";
@@ -12,13 +12,26 @@ import "./Navigation.css";
 const Navigation = () => {
   const { userInfo } = useSelector((state) => state.auth);
   const { cartItems } = useSelector((state) => state.cart);
-
+  const dropdownRef = useRef(null);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+
   const [showSidebar, setShowSidebar] = useState(false);
 
   const toggleDropdown = () => {
     setDropdownOpen(!dropdownOpen);
   };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setDropdownOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -35,6 +48,9 @@ const Navigation = () => {
     }
   };
 
+
+  
+
   return (
     <div
       style={{ zIndex: 9999 }}
@@ -44,24 +60,24 @@ const Navigation = () => {
       <div className="flex">
         <Link
           to="/"
-          className="flex items-center mr-10 hover:text-white"
+          className="flex items-center mr-10 hover:text-white text-sm"
         >
-          <AiOutlineHome className="mr-2 mt-[0rem]" size={20} />
+          <AiOutlineHome className="mr-3 mt-[0rem]" size={20} />
           <span className="nav-item-name mt-[0rem]">HOME</span>{" "}
         </Link>
 
         <Link
           to="/shop"
-          className="flex items-center mr-10 hover:text-white"
+          className="flex items-center mr-10 hover:text-white text-sm"
         >
-          <AiOutlineShopping className="mr-2 mt-[0rem]" size={20} />
+          <AiOutlineShopping className="mr-3 mt-[0rem]" size={20} />
           <span className="nav-item-name mt-[0rem]">SHOP</span>{" "}
         </Link>
 
         <Link to="/cart" className="flex items-center mr-10 hover:text-white">
           
-            <AiOutlineShoppingCart className="mr-2 mt-[0rem]" size={20} />
-            <span className="nav-item-name text-base mt-[0rem]">CART</span>{" "}
+            <AiOutlineShoppingCart className="mr-3 mt-[0rem]" size={20} />
+            <span className="nav-item-name text-sm mt-[0rem]">CART</span>{" "}
 
           <div className="absolute top-9">
             {cartItems.length > 0 && (
@@ -74,7 +90,7 @@ const Navigation = () => {
           </div>
         </Link>
 
-        <Link to="/favorite" className="flex items-center mr-10 hover:text-white">
+        <Link to="/favorite" className="flex items-center mr-10 hover:text-white text-sm">
             <FaHeart className="mt-[0rem] mr-2" size={20} />
             <span className="nav-item-name mt-[0rem]">
               FAVORITES
@@ -89,7 +105,7 @@ const Navigation = () => {
           className="flex items-center text-gray-800 focus:outline-none"
         >
           {userInfo ? (
-            <span className="text-white text-lg">{userInfo.username}</span>
+            <span className="text-white text-lg">{userInfo.username.charAt(0).toUpperCase() + userInfo.username.slice(1)}</span>
           ) : (
             <></>
           )}
@@ -115,7 +131,8 @@ const Navigation = () => {
 
         {dropdownOpen && userInfo && (
           <ul
-            className={`absolute right-0 mr-0.2 mt-${userInfo.isAdmin? "[23rem]" : "[9rem]"} space-y-2 bg-white text-black w-[10rem] text-center${
+            ref={dropdownRef}
+            className={`absolute right-0 mr-0.2 ${userInfo.isAdmin? "mt-[24rem]" : "mt-[9rem]"} space-y-2 bg-white text-black w-[10rem] text-center${
               !userInfo.isAdmin ? "-top-20" : "-top-80"
             } `}
           >
@@ -124,7 +141,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/dashboard"
-                    className="block px-4 py-2 hover:bg-green-500  hover:text-white"
+                    className="block px-4 py-2 hover:bg-green-500  hover:text-white font-medium"
                   >
                     Dashboard
                   </Link>
@@ -132,7 +149,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/productlist"
-                    className="block px-4 py-2 hover:bg-green-500  hover:text-white"
+                    className="block px-4 py-2 hover:bg-green-500  hover:text-white font-medium"
                   >
                     Products
                   </Link>
@@ -140,7 +157,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/categorylist"
-                    className="block px-4 py-2 hover:bg-green-500  hover:text-white"
+                    className="block px-4 py-2 hover:bg-green-500  hover:text-white font-medium"
                   >
                     Category
                   </Link>
@@ -148,7 +165,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/orderlist"
-                    className="block px-4 py-2 hover:bg-green-500  hover:text-white"
+                    className="block px-4 py-2 hover:bg-green-500  hover:text-white font-medium"
                   >
                     Orders
                   </Link>
@@ -156,7 +173,7 @@ const Navigation = () => {
                 <li>
                   <Link
                     to="/admin/userlist"
-                    className="block px-4 py-2 hover:bg-green-500  hover:text-white"
+                    className="block px-4 py-2 hover:bg-green-500  hover:text-white font-medium"
                   >
                     Users
                   </Link>
@@ -165,7 +182,7 @@ const Navigation = () => {
             )}
 
             <li>
-              <Link to="/profile" className="block px-4 py-2 hover:bg-green-500  hover:text-white">
+              <Link to="/profile" className="block px-4 py-2 hover:bg-green-500  hover:text-white font-medium">
                 Profile
               </Link>
             </li>

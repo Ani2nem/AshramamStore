@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toast } from "react-toastify";
+import { Toaster, toast } from 'sonner'
 
 import Loader from "../../components/Loader";
 import { useProfileMutation } from "../../redux/api/usersApiSlice";
@@ -46,50 +46,51 @@ const Profile = () => {
   };
 
   return (
-    <div className="container mx-auto p-4 mt-[10rem]">
+    <div className="container mx-auto p-4 mt-[6rem]">
       <div className="flex justify-center align-center md:flex md:space-x-4">
-        <div className="md:w-1/3">
-          <h2 className="text-2xl font-semibold mb-4">Update Profile</h2>
+      <Toaster richColors position="top-center"/>
+        <div className="md:w-1/2">
+          <h2 className="text-4xl font-semibold mb-10 text-center">UPDATE PROFILE</h2>
           <form onSubmit={submitHandler}>
             <div className="mb-4">
-              <label className="block text-white mb-2">Name</label>
+              <label className="block text-base font-semibold mb-1 ml-0.5">Update Name</label>
               <input
                 type="text"
-                placeholder="Enter name"
-                className="form-input p-4 rounded-sm w-full"
+                placeholder="Enter new name"
+                className="mt-2 p-2 border rounded w-full text-black"
                 value={username}
                 onChange={(e) => setUserName(e.target.value)}
               />
             </div>
 
             <div className="mb-4">
-              <label className="block text-white mb-2">Email Address</label>
+              <label className="block text-base font-semibold mb-1 ml-0.5">Update Email Address</label>
               <input
                 type="email"
-                placeholder="Enter email"
-                className="form-input p-4 rounded-sm w-full"
+                placeholder="Enter new email"
+                className="mt-2 p-2 border rounded w-full text-black"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
             <div className="mb-4">
-              <label className="block text-white mb-2">Password</label>
+              <label className="block text-base font-semibold mb-1 ml-0.5">Update Password</label>
               <input
                 type="password"
-                placeholder="Enter password"
-                className="form-input p-4 rounded-sm w-full"
+                placeholder="New password"
+                className="mt-2 p-2 border rounded w-full text-black"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
 
             <div className="mb-4">
-              <label className="block text-white mb-2">Confirm Password</label>
+              <label className="block text-base font-semibold mb-1 ml-0.5">Confirm New Password</label>
               <input
                 type="password"
-                placeholder="Confirm password"
-                className="form-input p-4 rounded-sm w-full"
+                placeholder="Confirm new password"
+                className="mt-2 p-2 border rounded w-full text-black mb-8"
                 value={confirmPassword}
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
@@ -98,14 +99,14 @@ const Profile = () => {
             <div className="flex justify-between">
               <button
                 type="submit"
-                className="bg-pink-500 text-white py-2 px-4 rounded hover:bg-pink-600"
+                className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 active:bg-green-900"
               >
                 Update
               </button>
 
               <Link
                 to="/user-orders"
-                className="bg-pink-600 text-white py-2 px-4 rounded hover:bg-pink-700"
+                className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 active:bg-green-900"
               >
                 My Orders
               </Link>
