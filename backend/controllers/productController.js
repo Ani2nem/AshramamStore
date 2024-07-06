@@ -3,29 +3,29 @@ import Product from '../models/productModel.js';
 
 const addProduct = asyncHandler(async (req, res) => {
     try {
-        const {name, description, price, category, quantity, brand, image} = req.fields;
+        const { name, description, price, category, quantity, brand, image } = req.fields;
 
         // Validate
-        switch (true){
+        switch (true) {
             case !name:
-                return res.json({error: "Name is required!"})
+                return res.json({ error: "Name is required!" });
             case !description:
-                return res.json({error: "Description is required!"})
+                return res.json({ error: "Description is required!" });
             case !price:
-                return res.json({error: "Price is required!"})
+                return res.json({ error: "Price is required!" });
             case !category:
-                return res.json({error: "Category is required!"})
+                return res.json({ error: "Category is required!" });
             case !quantity:
-                return res.json({error: "Quantity is required!"})
+                return res.json({ error: "Quantity is required!" });
             case !brand:
-                return  res.json({error: "Brand is required!"})
+                return res.json({ error: "Brand is required!" });
             case !image:
-                return  res.json({error: "Image is required!"})
+                return res.json({ error: "Image is required!" });
         }
 
-        const product = new Product({...req.fields});
+        const product = new Product({ ...req.fields });
         await product.save();
-        res.json({product});
+        res.json({ product });
 
     } catch (error) {
         console.error(error);
@@ -70,9 +70,12 @@ const updateProduct = asyncHandler(async (req, res) => {
 const deleteProduct = asyncHandler(async (req, res) => {
     try {
         const product = await Product.findByIdAndDelete(req.params.id);
-        res.status(200).json({product: product});
+        if (!product) {
+            return res.status(404).json({ message: "Product not found" });
+        }
+        res.status(200).json(product); 
     } catch (error) {
-        res.status(500).json(error.message);
+        res.status(500).json({ message: error.message });
     }
 });
 

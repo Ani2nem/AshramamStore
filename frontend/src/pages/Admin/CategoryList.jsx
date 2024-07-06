@@ -102,7 +102,7 @@ const CategoryList = () => {
 
 
   return (
-    <div className="ml-[10rem] flex flex-col md:flex-row text-black mt-[6rem]">
+    <div className="ml-[10rem] flex flex-col md:flex-row text-black mt-[5rem]">
       <Toaster richColors position="top-center"/>
       <AdminMenu />
       <div className="md:w-3/4 p-3">

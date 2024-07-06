@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Toaster, toast } from 'sonner'
-
+import AdminMenu from "../Admin/AdminMenu";
 import Loader from "../../components/Loader";
 import { useProfileMutation } from "../../redux/api/usersApiSlice";
 import { setCredentials } from "../../redux/features/auth/authSlice";
@@ -47,6 +47,7 @@ const Profile = () => {
 
   return (
     <div className="container mx-auto p-4 mt-[6rem]">
+       <AdminMenu />
       <div className="flex justify-center align-center md:flex md:space-x-4">
       <Toaster richColors position="top-center"/>
         <div className="md:w-1/2">
