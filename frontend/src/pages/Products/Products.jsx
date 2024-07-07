@@ -67,10 +67,10 @@ const Product = () => {
     <>
       <div>
         <Link
-          className="text-white font-semibold hover:underline ml-[10rem]"
+          className="text-black font-semibold hover:underline ml-[10rem]"
           to="/"
         >
-          Go Back
+           Back
         </Link>
       </div>
       {isLoading ? (
@@ -157,7 +157,7 @@ const Product = () => {
                 <button
                   onClick={addToCartHandler}
                   disabled={product.countInStock === 0}
-                  className="bg-pink-600 text-white py-2 px-4 rounded-lg mt-4 md:mt-0"
+                  className="bg-green-500 text-white py-2 px-4 rounded-lg mt-4 md:mt-0"
                 >
                   Add To Cart
                 </button>
