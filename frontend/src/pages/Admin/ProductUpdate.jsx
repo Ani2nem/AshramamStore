@@ -92,7 +92,7 @@ const AdminProductUpdate = () => {
         toast.error(data.error);
       } else {
         toast.success("Product successfully updated");
-        setTimeout(() => navigate("/admin/allproductslist"), 2000);  // Delay navigation by 2 seconds
+        setTimeout(() => navigate("/admin/allproductslist"), 1000);  // Delay navigation by 2 seconds
       }
     } catch (err) {
       console.log(err);
@@ -105,7 +105,7 @@ const AdminProductUpdate = () => {
     try {
       const { data } = await deleteProduct(params._id);
       toast.success(`"${data.name}" is deleted`);
-      setTimeout(() => navigate("/admin/allproductslist"), 2000);
+      setTimeout(() => navigate("/admin/allproductslist"), 1000);
       
     } catch (err) {
       console.log(err);
