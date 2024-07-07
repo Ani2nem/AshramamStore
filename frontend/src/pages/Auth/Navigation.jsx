@@ -79,10 +79,10 @@ const Navigation = () => {
             <AiOutlineShoppingCart className="mr-3 mt-[0rem]" size={20} />
             <span className="nav-item-name text-sm mt-[0rem]">CART</span>{" "}
 
-          <div className="absolute top-9">
+          <div className="absolute top-1 left-[14.7rem]">
             {cartItems.length > 0 && (
               <span>
-                <span className="px-1 py-0 text-sm text-white bg-pink-500 rounded-full">
+                <span className="px-1 py-0 text-xs text-white bg-green-500 rounded-full">
                   {cartItems.reduce((a, c) => a + c.qty, 0)}
                 </span>
               </span>
@@ -90,7 +90,7 @@ const Navigation = () => {
           </div>
         </Link>
 
-        <Link to="/favorite" className="flex items-center mr-10 hover:text-white text-sm">
+        <Link to="/favorite" className="flex items-center mr-10 hover:text-white text-xs">
             <FaHeart className="mt-[0rem] mr-2" size={20} />
             <span className="nav-item-name mt-[0rem]">
               FAVORITES

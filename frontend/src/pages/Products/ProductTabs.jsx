@@ -28,10 +28,10 @@ const ProductTabs = ({
   };
 
   return (
-    <div className="flex flex-col md:flex-row bg-white p-4 rounded-lg border-2 border-slate-300">
+    <div className="flex flex-col md:flex-row">
       <section className="mr-[3rem]">
         <div
-          className={`flex-1 p-4 cursor-pointer text-lg hover:text-green-500 ${
+          className={`flex-1 p-8 cursor-pointer text-lg hover:text-green-500 ${
             activeTab === 1 ? "font-bold text-green-600" : ""
           }`}
           onClick={() => handleTabClick(1)}
@@ -39,7 +39,7 @@ const ProductTabs = ({
           Write Your Review
         </div>
         <div
-          className={`flex-1 p-4 cursor-pointer text-lg hover:text-green-500 ${
+          className={`flex-1 p-8 cursor-pointer text-lg hover:text-green-500 ${
             activeTab === 2 ? "font-bold  text-green-600" : ""
           }`}
           onClick={() => handleTabClick(2)}
@@ -47,7 +47,7 @@ const ProductTabs = ({
           All Reviews
         </div>
         <div
-          className={`flex-1 p-4 cursor-pointer text-lg  hover:text-green-500 ${
+          className={`flex-1 p-8 cursor-pointer text-lg  hover:text-green-500 ${
             activeTab === 3 ? "font-bold  text-green-600" : ""
           }`}
           onClick={() => handleTabClick(3)}
@@ -116,14 +116,14 @@ const ProductTabs = ({
 
       <section>
         {activeTab === 2 && (
-          <>
+          <div>
             <div>{product.reviews.length === 0 && <p>No Reviews</p>}</div>
 
             <div>
               {product.reviews.map((review) => (
                 <div
                   key={review._id}
-                  className="bg-white p-4 rounded-lg xl:ml-[2rem] sm:ml-[0rem] xl:w-[50rem] sm:w-[24rem] mb-5"
+                  className="bg-white p-4 rounded-lg xl:ml-[2rem] sm:ml-[0rem] xl:w-[50rem] sm:w-[24rem] mb-5 mt-5"
                 >
                   <div className="flex justify-between">
                     <strong className="text-black">{review.name}</strong>
@@ -137,7 +137,7 @@ const ProductTabs = ({
                 </div>
               ))}
             </div>
-          </>
+          </div>
         )}
       </section>
 

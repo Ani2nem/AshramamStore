@@ -27,7 +27,7 @@ const ProductCarousel = () => {
   };
 
   return (
-    <div className="mb-[2rem] lg:block xl:block md:block">
+    <div className="mb-[2rem] lg:block xl:block md:block w-full">
       {isLoading ? null : error ? (
         <Message variant="danger">
           {error?.data?.message || error.error}
@@ -35,7 +35,7 @@ const ProductCarousel = () => {
       ) : (
         <Slider
           {...settings}
-          className="xl:w-[90%] lg:w-[90%]  sm:-w-[90%]  sm:block flex justify-center ml-14"
+          className="xl:w-[90%] lg:w-[90%]  sm:-w-[90%]  sm:block flex justify-center ml-14 text-white"
         >
           {products.map(
             ({
@@ -70,29 +70,29 @@ const ProductCarousel = () => {
                   <div className="flex justify-between w-[20rem]">
                     <div className="one">
                       <h1 className="flex items-center mb-6">
-                        <FaStore className="mr-2 text-black" /> Brand: {brand}
+                        <FaStore className="mr-2 text-white" /> Brand: {brand}
                       </h1>
                       <h1 className="flex items-center mb-6">
-                        <FaClock className="mr-2 text-black" /> Added:{" "}
+                        <FaClock className="mr-2 text-white" /> Added:{" "}
                         {moment(createdAt).fromNow()}
                       </h1>
                       <h1 className="flex items-center mb-6">
-                        <FaStar className="mr-2 text-black" /> Reviews:
+                        <FaStar className="mr-2 text-white" /> Reviews:
                         {numReviews}
                       </h1>
                     </div>
 
                     <div className="two">
                       <h1 className="flex items-center mb-6">
-                        <FaStar className="mr-2 text-black" /> Ratings:{" "}
+                        <FaStar className="mr-2 text-white" /> Ratings:{" "}
                         {Math.round(rating)}
                       </h1>
                       <h1 className="flex items-center mb-6">
-                        <FaShoppingCart className="mr-2 text-black" /> Quantity:{" "}
+                        <FaShoppingCart className="mr-2 text-white" /> Quantity:{" "}
                         {quantity}
                       </h1>
                       <h1 className="flex items-center mb-6">
-                        <FaBox className="mr-2 text-black" /> In Stock:{" "}
+                        <FaBox className="mr-2 text-white" /> In Stock:{" "}
                         {countInStock}
                       </h1>
                     </div>

@@ -23,8 +23,8 @@ const Cart = () => {
   };
 
   return (
-    <>
-      <div className="container flex justify-around items-start flex wrap mx-auto mt-8">
+    <div className="bg-black pt-5 w-full h-[100vh]">
+      <div className="container flex justify-around items-start flex wrap mx-auto mt-[4rem] ">
         {cartItems.length === 0 ? (
           <div>
             Your cart is empty <Link to="/shop">Go To Shop</Link>
@@ -32,10 +32,10 @@ const Cart = () => {
         ) : (
           <>
             <div className="flex flex-col w-[80%]">
-              <h1 className="text-2xl font-semibold mb-4">Shopping Cart</h1>
+              <h1 className="text-4xl font-semibold mb-10 text-left text-white">Shopping Cart</h1>
 
               {cartItems.map((item) => (
-                <div key={item._id} className="flex items-enter mb-[1rem] pb-2">
+                <div key={item._id} className="flex items-enter mb-[1rem] pb-2  w-full rounded-lg py-3 px-3 bg-[#1A1A1A] border-2 border-neutral-800">
                   <div className="w-[5rem] h-[5rem]">
                     <img
                       src={item.image}
@@ -44,20 +44,20 @@ const Cart = () => {
                     />
                   </div>
 
-                  <div className="flex-1 ml-4">
-                    <Link to={`/product/${item._id}`} className="text-pink-500">
+                  <div className="flex-1">
+                    <Link to={`/product/${item._id}`} className="text-lg text-white pl-5">
                       {item.name}
                     </Link>
 
-                    <div className="mt-2 text-white">{item.brand}</div>
-                    <div className="mt-2 text-white font-bold">
-                      $ {item.price}
+                    <div className="mt-0 text-white text-sm pl-6">{item.brand}</div>
+                    <div className="mt-0 text-white font-bold pl-5">
+                      ₹ {item.price}
                     </div>
                   </div>
 
-                  <div className="w-24">
+                  <div className="w-[3rem] flex flex-col justify-center mt-3">
                     <select
-                      className="w-full p-1 border rounded text-black"
+                      className="w-full p-1 border-gray-950 border rounded text-white text-base bg-[#151515]"
                       value={item.qty}
                       onChange={(e) =>
                         addToCartHandler(item, Number(e.target.value))
@@ -71,12 +71,12 @@ const Cart = () => {
                     </select>
                   </div>
 
-                  <div>
+                  <div className="flex flex-col justify-center">
                     <button
                       className="text-red-500 mr-[5rem]"
                       onClick={() => removeFromCartHandler(item._id)}
                     >
-                      <FaTrash className="ml-[1rem] mt-[.5rem]" />
+                      <FaTrash className="ml-[2rem] mt-[.5rem]" size={22}/>
                     </button>
                   </div>
                 </div>
@@ -84,31 +84,32 @@ const Cart = () => {
 
               <div className="mt-8 w-[40rem]">
                 <div className="p-4 rounded-lg">
-                  <h2 className="text-xl font-semibold mb-2">
+                  <h2 className="text-xl font-semibold mb-2 text-white">
                     Items ({cartItems.reduce((acc, item) => acc + item.qty, 0)})
                   </h2>
 
-                  <div className="text-2xl font-bold">
-                    ${" "}
+                  <div className="text-2xl font-bold text-white">
+                    ₹{" "}
                     {cartItems
                       .reduce((acc, item) => acc + item.qty * item.price, 0)
                       .toFixed(2)}
                   </div>
-
-                  <button
-                    className="bg-pink-500 mt-4 py-2 px-4 rounded-full text-lg w-full"
-                    disabled={cartItems.length === 0}
-                    onClick={checkoutHandler}
-                  >
-                    Proceed To Checkout
-                  </button>
+                    <div className="flex justify-center md:w-[60rem]  sm:w-1/2">
+                      <button
+                        className="bg-green-500 hover:bg-green-600 active:bg-green-900 active:text-black text-white mt-[4rem] mb-[3rem] py-2 px-4 rounded-full text-lg w-[30rem]"
+                        disabled={cartItems.length === 0}
+                        onClick={checkoutHandler}
+                      >
+                        Proceed To Checkout
+                      </button>
+                  </div>
                 </div>
               </div>
             </div>
           </>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
