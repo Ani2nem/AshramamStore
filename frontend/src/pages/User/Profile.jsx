@@ -46,6 +46,8 @@ const Profile = () => {
   };
 
   return (
+    <div className="bg-black text-white w-full h-[100vh] pt-[4rem] pb-[4rem]">
+    
     <div className="container mx-auto p-4 mt-[6rem]">
        <AdminMenu />
       <div className="flex justify-center align-center md:flex md:space-x-4">
@@ -100,14 +102,14 @@ const Profile = () => {
             <div className="flex justify-between">
               <button
                 type="submit"
-                className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 active:bg-green-900"
+                className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 active:bg-green-900 hover:text-black"
               >
                 Update
               </button>
 
               <Link
                 to="/user-orders"
-                className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 active:bg-green-900"
+                className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 active:bg-green-900  hover:text-black"
               >
                 My Orders
               </Link>
@@ -117,6 +119,7 @@ const Profile = () => {
         </div>
       </div>
     </div>
+  </div>
   );
 };
 

@@ -26,8 +26,15 @@ const Cart = () => {
     <div className="bg-black pt-5 w-full h-[100vh]">
       <div className="container flex justify-around items-start flex wrap mx-auto mt-[4rem] ">
         {cartItems.length === 0 ? (
-          <div>
-            Your cart is empty <Link to="/shop">Go To Shop</Link>
+          <div className=" text-white">
+            <p className="flex justify-center w-full text-lg">Your cart is empty!</p>
+            <br></br>
+            <br></br>
+            <Link to="/shop">
+            <button className="flex justify-center w-full bg-green-500 py-[1rem] rounded-lg text-xl hover:bg-green-600 active:bg-green-900 hover:text-black active:text-white">
+              SHOP!
+            </button>
+            </Link>
           </div>
         ) : (
           <>

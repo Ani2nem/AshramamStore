@@ -94,7 +94,7 @@ const Shop = () => {
   };
 
   return (
-    <div className="bg-black pt-10 pb-10">
+    <div className="bg-black w-full pt-[4rem] pb-[4rem]">
       <div className="container mx-auto">
         <div className="flex md:flex-row">
           <div className="bg-[#151515] py-5 px-3 mt-[3rem] mb-2">

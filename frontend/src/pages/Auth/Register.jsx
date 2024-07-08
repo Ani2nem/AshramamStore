@@ -48,12 +48,13 @@ const Register = () => {
   };
 
   return (
-    <section className="pl-[0rem] pt-[1rem] flex flex-wrap justify-center">
+    <div  className="bg-black text-white w-full h-[100vh] py-[4rem]">
+    <section className="flex flex-wrap justify-center">
       <div className="mt-[6rem]">
       <Toaster richColors  position="top-center" />
       </div>
        
-      <div className="mr-[4rem] mt-[5rem]">
+      <div className="mr-[4rem] mt-[3rem]">
         <h1 className="text-4xl font-semibold mb-5 text-center">REGISTER</h1>
 
         <form onSubmit={submitHandler} className="container w-[40rem]">
@@ -135,7 +136,7 @@ const Register = () => {
         </form>
 
         <div className="mt-5 flex justify-center">
-          <p className="text-black text-[1.1rem]">
+          <p className="text-white text-[1.1rem]">
             Already have an account?{" "}
             <Link
               to={redirect ? `/login?redirect=${redirect}` : "/login"}
@@ -147,6 +148,7 @@ const Register = () => {
         </div>
       </div>
     </section>
+  </div>
   );
 };
 

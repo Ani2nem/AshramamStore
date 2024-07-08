@@ -1,19 +1,32 @@
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import { NavLink } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 
 const AdminMenu = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const isMenuOpenRef = useRef(null);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (isMenuOpenRef.current && !isMenuOpenRef.current.contains(event.target)) {
+        setIsMenuOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
   return (
     <>
       <button
         className={`${
-          isMenuOpen ? "top-2 right-2" : "top-5 right-7"
+          isMenuOpen ? "top-1 right-1" : "top-1 right-3"
         } bg-[#151515] p-2 fixed rounded-lg mt-[4rem]`}
         onClick={toggleMenu}
       >
@@ -29,7 +42,7 @@ const AdminMenu = () => {
       </button>
 
       {isMenuOpen && (
-        <section className="bg-[#151515] p-4 fixed right-7 top-5 mt-[3rem]">
+        <section ref={isMenuOpenRef} className="bg-[#151515] p-4 fixed right-9 top-[4.5rem] ">
           <ul className="list-none mt-2">
             <li>
               <NavLink

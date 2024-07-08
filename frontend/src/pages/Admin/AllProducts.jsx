@@ -16,8 +16,8 @@ const AllProducts = () => {
   }
 
   return (
-    <>
-      <div className="container mx-[9rem] mt-[5rem]">
+    <div className="bg-black text-white pt-[4rem] pb-[4rem]">
+      <div className="container mx-[9rem] mt-[2rem]">
         <div className="flex flex-col  md:flex-row">
           <div className="p-3">
             <div className="text-4xl font-semibold mb-10 text-left">
@@ -86,7 +86,7 @@ const AllProducts = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

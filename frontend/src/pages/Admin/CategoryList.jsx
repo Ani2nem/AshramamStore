@@ -102,7 +102,8 @@ const CategoryList = () => {
 
 
   return (
-    <div className="ml-[10rem] flex flex-col md:flex-row text-black mt-[5rem]">
+    <div className="bg-black w-full h-[100vh] pt-[4rem] pb-[rem]">
+    <div className="ml-[10rem] flex flex-col md:flex-row text-white mt-[2rem]">
       <Toaster richColors position="top-center"/>
       <AdminMenu />
       <div className="md:w-3/4 p-3">
@@ -111,7 +112,7 @@ const CategoryList = () => {
           value={name}
           setValue={setName}
           handleSubmit={handleCreateCategory}
-          />
+        />
         <br />
         <hr />
 
@@ -119,7 +120,7 @@ const CategoryList = () => {
           {categories?.map((category) => (
             <div key={category._id}>
               <button
-                className="bg-white border border-green-500 text-green-600 py-2 px-4 rounded-lg m-3 hover:bg-green-600 hover:text-white focus:outline-none foucs:ring-2 focus:ring-green-500 focus:ring-opacity-50"
+                className="text-[#151515] border border-white bg-white py-2 px-4 rounded-lg m-3 hover:bg-green-600 hover:text-white active:text-black text-lg focus:outline-none foucs:ring-2 focus:ring-green-500 focus:ring-opacity-50 "
                 onClick={() => {
                   {
                     setModalVisible(true);
@@ -145,6 +146,7 @@ const CategoryList = () => {
         </Modal>
       </div>
     </div>
+  </div>
   );
 };
 

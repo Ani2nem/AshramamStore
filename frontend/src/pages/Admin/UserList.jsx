@@ -69,7 +69,8 @@ const UserList = () => {
   };
   
   return (
-    <div className="p-4 mt-[3rem]">
+    <div className=" bg-black text-white pt-[4rem] pb-[4rem]">
+    <div className="p-4 mt-[2rem]">
       <Toaster richColors position="top-center"/>
       <h1 className="text-4xl font-semibold mb-10 text-center">USERS</h1>
       {isLoading ? (
@@ -181,6 +182,7 @@ const UserList = () => {
         </div>
       )}
     </div>
+  </div>
   );
 };
 

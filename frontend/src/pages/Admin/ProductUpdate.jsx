@@ -124,10 +124,10 @@ const AdminProductUpdate = () => {
 
 
   return (
-    <>
-      <div className="container  xl:mx-[9rem] sm:mx-[0] mt-[5rem]">
+    <div className="text-white bg-black pt-[4rem] pb-[4rem] w-full">
+      <div className="container mt-[2rem] w-full flex justify-center">
       <Toaster richColors position="top-center" />
-        <div className="flex flex-col md:flex-row">
+        <div className="flex flex-col md:flex-row w-full ml-[4rem] justify-center">
           <AdminMenu />
           <div className="md:w-3/4 p-3">
             <div className="text-4xl font-semibold mb-10 text-left">Update / Delete Product</div>
@@ -259,7 +259,7 @@ const AdminProductUpdate = () => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 

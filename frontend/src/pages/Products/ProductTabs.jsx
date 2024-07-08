@@ -123,7 +123,7 @@ const ProductTabs = ({
               {product.reviews.map((review) => (
                 <div
                   key={review._id}
-                  className="bg-white p-4 rounded-lg xl:ml-[2rem] sm:ml-[0rem] xl:w-[50rem] sm:w-[24rem] mb-5 mt-5"
+                  className="bg-slate-50 text-black p-4 rounded-lg xl:ml-[2rem] sm:ml-[0rem] xl:w-[50rem] sm:w-[24rem] mb-5 mt-5"
                 >
                   <div className="flex justify-between">
                     <strong className="text-black">{review.name}</strong>

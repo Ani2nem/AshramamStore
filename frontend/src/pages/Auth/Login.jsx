@@ -45,7 +45,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="bg-black text-white w-full h-[100vh] py-[4rem]">
       <section className="pl-[0rem] mt-[3rem] flex flex-wrap justify-center">
         <div className="mr-[4rem] mt-[5rem]">
           <Toaster richColors position="top-center" />

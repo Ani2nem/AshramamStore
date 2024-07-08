@@ -68,12 +68,12 @@ const ProductDetails = () => {
   };
 
   return (
-    < div className="mt-[2rem] bg-slate-50">
+    < div className="mt-[2rem] bg-black text-white">
      <Toaster richColors position="top-center" />
       <button className="mt-[2rem]">
         <Link
           to="/"
-          className="text-black font-semibold hover:underline hover:text-orange-500 ml-[1.5rem]"
+          className="text-white font-semibold hover:underline hover:text-orange-500 ml-[1.5rem]"
         >
           
            Back
@@ -101,7 +101,7 @@ const ProductDetails = () => {
             <div className="flex flex-col justify-between p-1 rounded-lg">
               <h2 className="text-5xl font-semibold mb-[-2rem]">{product.name}</h2>
               <p className="text-4xl font-extrabold mb-[-2rem]">₹ {product.price}</p>
-              <p className="my-1 xl:w-[35rem] lg:w-[35rem] md:w-[30rem] text-[#191818]">
+              <p className="my-3 pl-[0.5rem] xl:w-[35rem] lg:w-[35rem] md:w-[30rem] text-black bg-slate-50 rounded-lg">
                 {product.description}
               </p>
 
@@ -136,7 +136,7 @@ const ProductDetails = () => {
                 </div>
               </div>
 
-              <div className="flex justify-between flex-wrap">
+              <div className="flex justify-between flex-wrap pl-[0.5rem]">
               {product.rating > 0 ? (
                 <Ratings
                   value={product.rating}

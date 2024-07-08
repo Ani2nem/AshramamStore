@@ -29,7 +29,7 @@ const Ratings = ({ value, text, color }) => {
   return (
     <div className="flex items-center">
       {renderStars()}
-      <span className="rating-text ml-2 text-black">
+      <span className="rating-text ml-2 text-white">
         {text && text}
       </span>
     </div>

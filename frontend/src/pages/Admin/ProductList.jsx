@@ -68,7 +68,8 @@ const ProductList = () => {
   };
 
   return (
-    <div className="container xl:mx-[9rem] sm:mx-[0] mt-[5rem] w-full">
+  <div className="bg-black text-white pt-[4rem] pb-[4rem] w-full">
+    <div className="container xl:mx-[9rem] sm:mx-[0] mt-[2rem] w-full">
       <Toaster richColors position="top-center" />
       <div className="flex flex-col md:flex-row">
         <AdminMenu />
@@ -76,17 +77,17 @@ const ProductList = () => {
           <div className="text-4xl font-semibold mb-7 text-left">Create Product</div>
 
           {imageUrl && (
-            <div className="text-center">
+            <div className="text-center text-white">
               <img
                 src={imageUrl}
                 alt="product"
-                className="block mx-auto max-h-[200px]"
+                className="block mx-auto max-h-[200px] text-white"
               />
             </div>
           )}
 
           <div className="mb-3">
-            <label className="border text-black px-4 block w-[60rem] text-center rounded-lg cursor-pointer font-bold py-11">
+            <label className="border text-white px-4 block w-[60rem] text-center rounded-lg cursor-pointer font-bold py-11">
               {image ? image.name : "Upload Image"}
 
               <input
@@ -94,7 +95,7 @@ const ProductList = () => {
                 name="image"
                 accept="image/*"
                 onChange={uploadFileHandler}
-                className={!image ? "hidden" : "text-black"}
+                className={!image ? "hidden" : "text-white"}
               />
             </label>
           </div>
@@ -161,7 +162,7 @@ const ProductList = () => {
                 <label htmlFor="name block">Count In Stock</label> <br />
                 <input
                   type="text"
-                  className="p-4 mb-3 w-[28rem] border rounded-lg bg-stone-50 text-black mr-[2rem]"
+                  className="p-4 mb-3 w-[28rem] border rounded-lg bg-stone-50 text-black mr-[3rem]"
                   value={stock}
                   onChange={(e) => setStock(e.target.value)}
                 />
@@ -194,6 +195,7 @@ const ProductList = () => {
         </div>
       </div>
     </div>
+  </div>
   );
 };
 
