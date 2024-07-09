@@ -31,7 +31,7 @@ const Cart = () => {
             <br></br>
             <br></br>
             <Link to="/shop">
-            <button className="flex justify-center w-full bg-green-500 py-[1rem] rounded-lg text-xl hover:bg-green-600 active:bg-green-900 hover:text-black active:text-white">
+            <button className="flex justify-center w-full bg-green-500 py-2 rounded-lg text-xl hover:bg-green-600 active:bg-green-900 hover:text-black active:text-white">
               SHOP!
             </button>
             </Link>
@@ -101,7 +101,7 @@ const Cart = () => {
                       .reduce((acc, item) => acc + item.qty * item.price, 0)
                       .toFixed(2)}
                   </div>
-                    <div className="flex justify-center md:w-[60rem]  sm:w-1/2">
+                    <div className="flex justify-center w-1/2 md:w-full">
                       <button
                         className="bg-green-500 hover:bg-green-600 active:bg-green-900 active:text-black text-white mt-[4rem] mb-[3rem] py-2 px-4 rounded-full text-lg w-[30rem]"
                         disabled={cartItems.length === 0}

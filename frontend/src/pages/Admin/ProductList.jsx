@@ -22,7 +22,7 @@ const ProductList = () => {
 
   const [uploadProductImage] = useUploadProductImageMutation();
   const [createProduct] = useCreateProductMutation();
-  const { data: categories } = useFetchCategoriesQuery();
+  const { data: categories, isLoading, error } = useFetchCategoriesQuery();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -68,26 +68,26 @@ const ProductList = () => {
   };
 
   return (
-  <div className="bg-black text-white pt-[4rem] pb-[4rem] w-full">
-    <div className="container xl:mx-[9rem] sm:mx-[0] mt-[2rem] w-full">
+  <div className="bg-black text-white pt-[4rem] -mb-[2rem] w-full flex justify-center">
+    <div className="mt-[2rem] w-full flex justify-center pb-[2.5rem]">
       <Toaster richColors position="top-center" />
-      <div className="flex flex-col md:flex-row">
+      <div className="flex flex-col md:flex-row justify-center w-full">
         <AdminMenu />
-        <div className="md:w-3/4 p-3">
-          <div className="text-4xl font-semibold mb-7 text-left">Create Product</div>
+        <div className="p-3">
+          <div className="md:text-4xl text-xl font-semibold mb-7 flex justify-center md:w-full">Create Product</div>
 
           {imageUrl && (
             <div className="text-center text-white">
               <img
                 src={imageUrl}
                 alt="product"
-                className="block mx-auto max-h-[200px] text-white"
+                className="max-h-[200px] text-white"
               />
             </div>
           )}
 
-          <div className="mb-3">
-            <label className="border text-white px-4 block w-[60rem] text-center rounded-lg cursor-pointer font-bold py-11">
+          <div className="mb-3 flex justify-center items-center content-center w-full">
+            <label className="border text-white px-4 block w-3/5 md:w-full text-center rounded-lg cursor-pointer font-bold py-11">
               {image ? image.name : "Upload Image"}
 
               <input
@@ -100,46 +100,46 @@ const ProductList = () => {
             </label>
           </div>
 
-          <div className="p-3">
+          <div className="p-3 flex flex-col justify-center">
             <div className="flex">
-              <div className="one block text-base font-semibold mb-1 ml-0.5">
+              <div className="text-base font-semibold mb-[2rem] ml-0.5">
                 <label htmlFor="name">Name</label> <br />
                 <input
                   type="text"
                   placeholder="Name"
-                  className="p-4 mb-3 w-[28rem] border rounded-lg bg-stone-50 text-black mr-[3rem]"
+                  className="p-2 md:p-3 mb-3 w-[12rem] lg:w-[25rem] border rounded-lg bg-stone-50 mr-[1rem] text-black"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
               </div>
-              <div className="two block text-base font-semibold mb-1 ml-0.5">
+              <div className="text-base font-semibold mb-1 ml-0.5">
                 <label htmlFor="name block">Price</label> <br />
                 <input
                   type="number"
                   placeholder="Price"
-                  className="p-4 mb-3 w-[28rem] border rounded-lg bg-stone-50 text-black"
+                  className="p-2 md:p-3 mb-3 w-[12rem] lg:w-[25rem] border rounded-lg bg-stone-50 text-black"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
                 />
               </div>
             </div>
             <div className="flex">
-              <div className="one block text-base font-semibold mb-1 ml-0.5">
+              <div className="text-base font-semibold mb-1 ml-0.5">
                 <label htmlFor="name block">Quantity</label> <br />
                 <input
                   type="number"
                   placeholder="Quantity"
-                  className="p-4 mb-3 w-[28rem] border rounded-lg bg-stone-50 text-black mr-[3rem]"
+                  className="p-2 md:p-3 mb-3 w-[12rem] lg:w-[25rem] border rounded-lg mr-[1rem] bg-stone-50 text-black"
                   value={quantity}
                   onChange={(e) => setQuantity(e.target.value)}
                 />
               </div>
-              <div className="two block text-base font-semibold mb-1 ml-0.5">
+              <div className="text-base font-semibold mb-1 ml-0.5">
                 <label htmlFor="name block">Brand</label> <br />
                 <input
                   type="text"
                   placeholder="Brand"
-                  className="p-4 mb-3 w-[28rem] border rounded-lg bg-stone-50 text-black"
+                  className="p-2 md:p-3 mb-3 w-[12rem] lg:w-[25rem] border rounded-lg bg-stone-50 text-black"
                   value={brand}
                   onChange={(e) => setBrand(e.target.value)}
                 />
@@ -152,7 +152,7 @@ const ProductList = () => {
             <textarea
               type="text"
               placeholder="Product Description"
-              className="p-2 mb-3 bg-stone-50 border rounded-lg w-[59rem] text-black font-semibold"
+              className="p-2 md:p-3 mb-3 w-[20rem] lg:w-full border rounded-lg mr-[1rem] bg-stone-50 text-black"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             ></textarea>
@@ -162,7 +162,7 @@ const ProductList = () => {
                 <label htmlFor="name block">Count In Stock</label> <br />
                 <input
                   type="text"
-                  className="p-4 mb-3 w-[28rem] border rounded-lg bg-stone-50 text-black mr-[3rem]"
+                  className="p-2 md:p-3 mb-3 w-[10rem] lg:w-[25rem] border rounded-lg mr-[1rem] bg-stone-50 text-black"
                   value={stock}
                   onChange={(e) => setStock(e.target.value)}
                 />
@@ -170,24 +170,34 @@ const ProductList = () => {
 
               <div>
                 <label htmlFor="">Category</label> <br />
-                <select
-                  placeholder="Choose Category"
-                  className="p-4 mb-3 w-[28rem] border rounded-lg bg-stone-50 text-black"
-                  value={category}
-                  onChange={(e) => setCategory(e.target.value)}
-                >
-                   <option value="" disabled>Select a category</option>
-                  {categories.map((c) => (
-                    <option key={c._id} value={c._id}>
-                      {c.name}
-                    </option>
-                  ))}
-                </select>
+                {isLoading ? (
+                  <p>Loading categories...</p>
+                ) : error ? (
+                  <p>Error loading categories. Please try again.</p>
+                ) : categories && categories.length > 0 ? (
+                  <select
+                    placeholder="Choose Category"
+                    className="p-2 md:p-3 mb-3 w-[12rem] lg:w-[25rem] border rounded-lg mr-[1rem] bg-stone-50 text-black"
+                    value={category}
+                    onChange={(e) => setCategory(e.target.value)}
+                  >
+                    <option value="" disabled>Select a category</option>
+                    {categories.map((c) => (
+                      <option key={c._id} value={c._id}>
+                        {c.name}
+                      </option>
+                    ))}
+                  </select>
+                ) : (
+                  <p>No categories available.</p>
+                )}
               </div>
             </div>
             <button
               onClick={handleSubmit}
-              className="py-3 px-5 mt-5 rounded-lg text-lg font-bold bg-green-500 hover:bg-green-600 active:bg-green-800 w-[60rem] text-black hover:text-white active:text-black"
+              className="py-3 px-5 mt-5 rounded-lg text-lg font-bold bg-green-500 hover:bg-green-600 active:bg-green-800 text-black hover:text-white active:text-black
+              p-2 md:p-3 mb-3 w-[10rem] xl:w-[68rem]"
+              disabled={isLoading || !categories || categories.length === 0}
             >
               Submit
             </button>

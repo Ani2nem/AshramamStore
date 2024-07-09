@@ -102,8 +102,8 @@ const CategoryList = () => {
 
 
   return (
-    <div className="bg-black w-full h-[100vh] pt-[4rem] pb-[rem]">
-    <div className="ml-[10rem] flex flex-col md:flex-row text-white mt-[2rem]">
+    <div className="bg-black w-full pt-[4rem] pb-[rem]">
+    <div className="flex flex-col justify-center md:flex-row text-white mt-[2rem]">
       <Toaster richColors position="top-center"/>
       <AdminMenu />
       <div className="md:w-3/4 p-3">

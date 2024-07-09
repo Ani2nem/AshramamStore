@@ -27,7 +27,7 @@ const ProductCarousel = () => {
   };
 
   return (
-    <div className="mb-[2rem] lg:block xl:block md:block w-full">
+    <div className="mb-[2rem] lg:block xl:block md:block w-full hidden pt-[5rem]">
       {isLoading ? null : error ? (
         <Message variant="danger">
           {error?.data?.message || error.error}
@@ -35,7 +35,7 @@ const ProductCarousel = () => {
       ) : (
         <Slider
           {...settings}
-          className="xl:w-[90%] lg:w-[90%]  sm:-w-[90%]  sm:block flex justify-center ml-14 text-white"
+          className="w-full flex justify-center px-[2rem] text-white"
         >
           {products.map(
             ({
@@ -58,7 +58,7 @@ const ProductCarousel = () => {
                   className="w-full rounded-lg object-cover h-[30rem]"
                 />
 
-                <div className="mt-4 flex justify-between">
+                <div className="mt-4 flex justify-between px-[3rem]">
                   <div className="one">
                     <h2>{name}</h2>
                     <p>  ₹{price}</p> <br /> <br />
@@ -67,7 +67,7 @@ const ProductCarousel = () => {
                     </p>
                   </div>
 
-                  <div className="flex justify-between w-[20rem]">
+                  <div className="flex justify-between lg:w-[30rem] md:w-[50rem]">
                     <div className="one">
                       <h1 className="flex items-center mb-6">
                         <FaStore className="mr-2 text-white" /> Brand: {brand}

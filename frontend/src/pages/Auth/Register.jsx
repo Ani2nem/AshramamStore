@@ -54,10 +54,10 @@ const Register = () => {
       <Toaster richColors  position="top-center" />
       </div>
        
-      <div className="mr-[4rem] mt-[3rem]">
-        <h1 className="text-4xl font-semibold mb-5 text-center">REGISTER</h1>
+      <div className="mr-[4rem] sm:mt-[4rem] mt-[1rem] sm:w-1/2">
+        <h1 className="text-4xl font-semibold mb-4 text-center">REGISTER</h1>
 
-        <form onSubmit={submitHandler} className="container w-[40rem]">
+        <form onSubmit={submitHandler} className="container ">
           <div className="my-[2rem]">
             <label
               htmlFor="name"

@@ -45,13 +45,13 @@ const Login = () => {
   };
 
   return (
-    <div className="bg-black text-white w-full h-[100vh] py-[4rem]">
-      <section className="pl-[0rem] mt-[3rem] flex flex-wrap justify-center">
-        <div className="mr-[4rem] mt-[5rem]">
+    <div className="bg-black text-white w-full  pt-[4rem] pb-[4rem]">
+      <section className="container mx-auto p-4 mt-[2rem] flex justify-center align-center md:flex md:space-x-4">
+        <div className="mr-[4rem] mt-[5rem] sm:w-1/2">
           <Toaster richColors position="top-center" />
           <h1 className="text-4xl font-semibold mb-10 text-center">LOGIN</h1>
 
-          <form onSubmit={submitHandler} className="container w-[40rem]">
+          <form onSubmit={submitHandler} className="container">
             <div className="my-[2rem]">
               <label
                 htmlFor="email"
@@ -62,7 +62,7 @@ const Login = () => {
               <input
                 type="email"
                 id="email"
-                className="mt-1 p-2 border rounded w-full  text-black"
+                className="mt-2 p-2 border rounded w-full text-black"
                 placeholder="Enter email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value.toLowerCase())}

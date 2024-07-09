@@ -10,7 +10,7 @@ const Home = () => {
   const { data, isLoading, isError } = useGetProductsQuery({ keyword });
 
   return (
-    <div className="bg-black pt-5 ">
+    <div className="bg-black w-full -mt-[5rem]">
       {!keyword ? <div><Header /></div> : null}
       {isLoading ? (
         <Loader />
@@ -19,22 +19,22 @@ const Home = () => {
           {isError.data.message || isError.error || "An unexpected error occurred"}
         </Message>
       ) : (
-        <div className="bg-black w-95">
-          <div className="flex justify-between items-center mb-[5rem]">
-            <h1 className="ml-[8rem] mt-[3rem] text-[3rem] text-orange-600 text-6xl">
+        <div className="bg-black w-full flex flex-col justify-center mt-[3rem]">
+          <div className="flex justify-between items-center mb-[5rem] w-full md:pl-[8rem] md:pr-[6rem] pl-[6rem] pr-[4rem]">
+            <h1 className="md:text-[3rem] text-[2rem] mr-[2rem] text-orange-600 text-6xl font-extrabold font-serif">
               Special Products
             </h1>
 
             <Link
               to="/shop"
-              className="bg-green-500 hover:bg-green-600 active:bg-green-900 hover:text-white active:text-black font-bold rounded-full py-2 px-10 mr-[10rem] mt-[3em]"
+              className="bg-green-500 hover:bg-green-600 active:bg-green-900 hover:text-white active:text-black font-bold rounded-full py-2 px-10"
             >
               Shop
             </Link>
           </div>
 
           <div>
-            <div className="flex justify-center flex-wrap pb-[10rem] mb-[-1rem] -ml-[6rem]">
+            <div className="flex justify-center flex-wrap pb-[5rem] mb-[-1rem] ">
               {data.products.map((product) => (
                 <div key={product._id}>
                   <Product product={product} />

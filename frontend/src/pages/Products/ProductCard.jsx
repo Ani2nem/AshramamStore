@@ -14,7 +14,7 @@ const ProductCard = ({ p }) => {
   };
 
   return (
-    <div className="max-w-sm relative bg-[#1A1A1A] rounded-lg shaodw dark:border-gray-700">
+    <div className="relative bg-[#1A1A1A] rounded-lg shaodw dark:border-gray-700">
       <Toaster richColors position="top-center" />
       <section className="relative">
         <Link to={`/product/${p._id}`}>

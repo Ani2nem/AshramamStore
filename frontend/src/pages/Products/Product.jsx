@@ -3,12 +3,12 @@ import HeartIcon from "./HeartIcon";
 
 const Product = ({ product }) => {
   return (
-    <div className="w-[35rem] ml-[3.4rem] p-3 relative">
+    <div className="lg:w-[35rem] md:w-[30rem] w-[25rem] ml-[3.4rem] p-3 relative">
       <div className="relative">
         <img
           src={product.image}
           alt={product.name}
-          className="w-[40rem] rounded-2xl"
+          className="lg:w-[40rem] md:w-[30rem] w-[25rem] rounded-2xl"
         />
         <HeartIcon product={product} size={30}/>
       </div>

@@ -132,7 +132,7 @@ const Navigation = () => {
         {dropdownOpen && userInfo && (
           <ul
             ref={dropdownRef}
-            className={`absolute right-0 mr-0.2 ${userInfo.isAdmin? "mt-[24rem]" : "mt-[9rem]"} space-y-2 bg-white text-black w-[10rem] text-center${
+            className={`absolute right-0 mr-0.2 ${userInfo.isAdmin? "mt-[12rem]" : "mt-[9rem]"} space-y-2 bg-white text-black w-[10rem] text-center${
               !userInfo.isAdmin ? "-top-20" : "-top-80"
             } `}
           >
@@ -144,38 +144,6 @@ const Navigation = () => {
                     className="block px-4 py-2 hover:bg-green-500  hover:text-white font-medium"
                   >
                     Dashboard
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/admin/productlist"
-                    className="block px-4 py-2 hover:bg-green-500  hover:text-white font-medium"
-                  >
-                    Products
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/admin/categorylist"
-                    className="block px-4 py-2 hover:bg-green-500  hover:text-white font-medium"
-                  >
-                    Category
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/admin/orderlist"
-                    className="block px-4 py-2 hover:bg-green-500  hover:text-white font-medium"
-                  >
-                    Orders
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/admin/userlist"
-                    className="block px-4 py-2 hover:bg-green-500  hover:text-white font-medium"
-                  >
-                    Users
                   </Link>
                 </li>
               </>

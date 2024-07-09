@@ -69,10 +69,10 @@ const UserList = () => {
   };
   
   return (
-    <div className=" bg-black text-white pt-[4rem] pb-[4rem]">
-    <div className="p-4 mt-[2rem]">
+    <div className=" bg-black text-white pt-[6rem] pb-[3rem]">
+    <h1 className="text-2xl md:text-3xl lg:3xl xl:4xl font-semibold w-full flex justify-center">USERS</h1>
+    <div className="p-4 mt-[2rem] flex justify-center w-[30rem] ml-[1rem] md:w-full">
       <Toaster richColors position="top-center"/>
-      <h1 className="text-4xl font-semibold mb-10 text-center">USERS</h1>
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -80,17 +80,17 @@ const UserList = () => {
           {error?.data?.message || error.error}
         </Message>
       ) : (
-        <div className="flex flex-col md:flex-row ">
+        <div className="flex flex-col md:flex-row text-xs md:text-base lg:text-lg justify-center pl-[10rem] md:pl-[0rem]">
           <div className="flex flex-col bg-black">
           <AdminMenu /> 
           </div>
-          <table className="w-full md:w-4/5 mx-auto ">
+          <table className="w-full ">
             <thead>
               <tr>
-                <th className="px-4 py-2 text-left text-base font-semibold">ID</th>
-                <th className="px-4 py-2 text-left text-base font-semibold">NAME</th>
-                <th className="px-4 py-2 text-left text-base font-semibold">EMAIL</th>
-                <th className="px-4 py-2 text-left text-base font-semibold">ADMIN</th>
+                <th className="px-4 py-2 text-left  font-semibold">ID</th>
+                <th className="px-4 py-2 text-left font-semibold">NAME</th>
+                <th className="px-4 py-2 text-left font-semibold">EMAIL</th>
+                <th className="px-4 py-2 text-left  font-semibold">ADMIN</th>
                 <th className="px-4 py-2"></th>
               </tr>
             </thead>

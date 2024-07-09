@@ -124,10 +124,10 @@ const AdminProductUpdate = () => {
 
 
   return (
-    <div className="text-white bg-black pt-[4rem] pb-[4rem] w-full">
+    <div className="text-white bg-black pt-[4rem] pb-[4rem] w-full flex justify-center">
       <div className="container mt-[2rem] w-full flex justify-center">
       <Toaster richColors position="top-center" />
-        <div className="flex flex-col md:flex-row w-full ml-[4rem] justify-center">
+        <div className="flex flex-col md:flex-row w-full justify-center">
           <AdminMenu />
           <div className="md:w-3/4 p-3">
             <div className="text-4xl font-semibold mb-10 text-left">Update / Delete Product</div>
@@ -162,7 +162,7 @@ const AdminProductUpdate = () => {
                 <input
                   type="text"
                   placeholder="Name"
-                  className="p-4 mb-3 w-[28rem] border rounded-lg bg-stone-50 text-black mr-[3rem]"
+                  className="p-2 md:p-3 mb-3 w-[12rem] lg:w-[25rem] border rounded-lg bg-stone-50 mr-[1rem] text-black"
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                 />
@@ -172,7 +172,7 @@ const AdminProductUpdate = () => {
                 <input
                   type="number"
                   placeholder="Price"
-                  className="p-4 mb-3 w-[28rem] border rounded-lg bg-stone-50 text-black"
+                  className="p-2 md:p-3 mb-3 w-[12rem] lg:w-[25rem] border rounded-lg bg-stone-50 mr-[1rem] text-black"
                   value={price}
                   onChange={(e) => setPrice(e.target.value)}
                 />
@@ -184,17 +184,17 @@ const AdminProductUpdate = () => {
                 <input
                   type="number"
                   placeholder="Quantity"
-                  className="p-4 mb-3 w-[28rem] border rounded-lg bg-stone-50 text-black mr-[3rem]"
+                  className="p-2 md:p-3 mb-3 w-[12rem] lg:w-[25rem] border rounded-lg bg-stone-50 mr-[1rem] text-black"
                   value={quantity}
                   onChange={(e) => setQuantity(e.target.value)}
                 />
               </div>
-              <div className="two block text-base font-semibold mb-1 ml-0.5">
+              <div className="one block text-base font-semibold mb-1 ml-0.5">
                 <label htmlFor="name block">Brand</label> <br />
                 <input
                   type="text"
                   placeholder="Brand"
-                  className="p-4 mb-3 w-[28rem] border rounded-lg bg-stone-50 text-black"
+                  className="p-2 md:p-3 mb-3 w-[12rem] lg:w-[25rem] border rounded-lg bg-stone-50 mr-[1rem] text-black"
                   value={brand}
                   onChange={(e) => setBrand(e.target.value)}
                 />
@@ -207,7 +207,7 @@ const AdminProductUpdate = () => {
             <textarea
               type="text"
               placeholder="Product Description"
-              className="p-2 mb-3 bg-stone-50 border rounded-lg w-[59rem] text-black font-semibold"
+              className="p-2 md:p-3 mb-3 w-[20rem] lg:w-full border rounded-lg mr-[1rem] bg-stone-50 text-black"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
             ></textarea>
@@ -217,7 +217,7 @@ const AdminProductUpdate = () => {
                 <label htmlFor="name block">Count In Stock</label> <br />
                 <input
                   type="text"
-                  className="p-4 mb-3 w-[28rem] border rounded-lg bg-stone-50 text-black mr-[2rem]"
+                  className="p-2 md:p-3 mb-3 w-[10rem] lg:w-[25rem] border rounded-lg mr-[1rem] bg-stone-50 text-black"
                   value={stock}
                   onChange={(e) => setStock(e.target.value)}
                 />
@@ -227,7 +227,7 @@ const AdminProductUpdate = () => {
                 <label htmlFor="">Category</label> <br />
                 <select
                   placeholder="Choose Category"
-                  className="p-4 mb-3 w-[28rem] border rounded-lg bg-stone-50 text-black"
+                  className="p-2 md:p-3 mb-3 w-[12rem] lg:w-[25rem] border rounded-lg mr-[1rem] bg-stone-50 text-black"
                   value={category}
                   onChange={(e) => setCategory(e.target.value)}
                 >
@@ -244,13 +244,15 @@ const AdminProductUpdate = () => {
               <div className="">
                 <button
                   onClick={handleSubmit}
-                  className="py-3 px-5 mt-5 rounded-lg text-lg font-bold bg-green-500 hover:bg-green-600 active:bg-green-800 w-[60rem] text-black hover:text-white active:text-black"
+                  className="py-3 px-5 mt-5 rounded-lg text-lg font-bold bg-green-500 hover:bg-green-600 active:bg-green-800 text-black hover:text-white active:text-black
+              p-2 md:p-3 mb-3 w-[10rem] xl:w-[57rem] mr-[1rem]"
                 >
                   Update
                 </button>
                 <button
                   onClick={deleteHandler}
-                  className="py-3 px-5 mt-5 rounded-lg text-lg font-bold bg-red-500 hover:bg-red-600 active:bg-red-800 w-[60rem] text-black hover:text-white active:text-black"
+                  className="py-3 px-5 mt-5 rounded-lg text-lg font-bold bg-red-500 hover:bg-red-600 active:bg-red-800 text-black hover:text-white active:text-black
+              p-2 md:p-3 mb-3 w-[10rem] xl:w-[57rem]"
                 >
                   Delete
                 </button>

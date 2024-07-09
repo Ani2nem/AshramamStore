@@ -61,12 +61,12 @@ const AdminDashboard = () => {
         title: {
           text: "Date",
           style: {
-            fontSize: '20px', // Increase x-axis title font size
+            fontSize: '2vw', // Increase x-axis title font size
           },
         },
         labels: {
           style: {
-            fontSize: '14px',  // Increase x-axis label font size
+            fontSize: '1vw',  // Increase x-axis label font size
           },
         },
       },
@@ -74,13 +74,13 @@ const AdminDashboard = () => {
         title: {
           text: "Sales",
           style: {
-            fontSize: '20px', // Increase y-axis title font size
+            fontSize: '2vw', // Increase y-axis title font size
           },
         },
         min: 0,
         labels: {
           style: {
-            fontSize: '14px', // Increase y-axis label font size
+            fontSize: '1vw', // Increase y-axis label font size
           },
         },
       },

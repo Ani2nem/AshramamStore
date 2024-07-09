@@ -18,9 +18,9 @@ const Header = () => {
     <>
       <div className="flex flex-col justify-center mt-[5rem] w-full">
       <ProductCarousel />
-        <div className="xl:block lg:hidden md:hidden:sm:hidden flex flex-col justify-between pl-10 bg-slate-100 w-full p-[3rem] w-full">
+        <div className="xl:block flex flex-col flex-wrap justify-between pl-10 bg-slate-100 w-full p-[3rem]">
           <h1 className="ml-[2rem] mb-[3rem] text-[3rem]  text-4xl">Top Products</h1>
-          <div className="grid grid-cols-3">
+          <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-2">
             {data.map((product) => (
               <div key={product._id}>
                 <SmallProduct product={product} />

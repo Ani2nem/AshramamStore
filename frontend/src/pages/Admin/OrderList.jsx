@@ -8,7 +8,7 @@ const OrderList = () => {
   const { data: orders, isLoading, error } = useGetOrdersQuery();
 
   return (
-    <div className="flex-col mt-[4rem] text-white bg-black pt-[3rem] w-full pb-[3rem]">
+    <div className="flex-col mt-[4rem] text-white bg-black pt-[3rem]  pb-[3rem] w-[30rem] md:w-full -ml-[5rem] md:ml-[2rem]">
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -16,10 +16,10 @@ const OrderList = () => {
           {error?.data?.message || error.error}
         </Message>
       ) : (
-        <table className="container mx-auto">
+        <table className="container mx-auto text-xs md:text-md ">
           <AdminMenu />
 
-          <thead className="w-full border">
+          <thead className="w-[30rem] md:w-full border">
             <tr className="mb-[5rem]">
               <th className="text-left pl-1">ITEMS</th>
               <th className="text-left pl-1">ID</th>
@@ -70,7 +70,7 @@ const OrderList = () => {
                       Delivered
                     </p>
                   ) : (
-                    <p className="p-1 text-center bg-red-500 w-[6rem] rounded-lg">
+                    <p className="p-1 text-center bg-red-500 w-[6rem]  rounded-lg">
                       Pending
                     </p>
                   )}
