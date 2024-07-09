@@ -5,11 +5,13 @@ import {
   useGetTotalSalesByDateQuery,
   useGetTotalSalesQuery,
 } from "../../redux/api/orderApiSlice";
+import { AiOutlineInbox, AiOutlineUser } from "react-icons/ai";
 
 import { useState, useEffect } from "react";
 import AdminMenu from "./AdminMenu";
 import OrderList from "./OrderList";
 import Loader from "../../components/Loader";
+import { FaBlackTie } from "react-icons/fa";
 
 const AdminDashboard = () => {
   const { data: sales, isLoading } = useGetTotalSalesQuery();
@@ -21,13 +23,20 @@ const AdminDashboard = () => {
     options: {
       chart: {
         type: "line",
+        background: 'transparent',
+        foreColor: '#fff',
+        fontFamily: 'Arial, sans-serif',
       },
       tooltip: {
         theme: "dark",
       },
-      colors: ["#00E396"],
+      colors: ["#00e325"],
       dataLabels: {
         enabled: true,
+        style: {
+          fontSize: '14px', 
+          fontWeight: 400, 
+        },
       },
       stroke: {
         curve: "smooth",
@@ -35,6 +44,11 @@ const AdminDashboard = () => {
       title: {
         text: "Sales Trend",
         align: "left",
+        style: {
+          fontSize: '50px', // Increase title font size
+          fontWeight: 700, // Slightly bolder than normal
+        },
+        
       },
       grid: {
         borderColor: "#ccc",
@@ -46,13 +60,29 @@ const AdminDashboard = () => {
         categories: [],
         title: {
           text: "Date",
+          style: {
+            fontSize: '20px', // Increase x-axis title font size
+          },
+        },
+        labels: {
+          style: {
+            fontSize: '14px',  // Increase x-axis label font size
+          },
         },
       },
       yaxis: {
         title: {
           text: "Sales",
+          style: {
+            fontSize: '20px', // Increase y-axis title font size
+          },
         },
         min: 0,
+        labels: {
+          style: {
+            fontSize: '14px', // Increase y-axis label font size
+          },
+        },
       },
       legend: {
         position: "top",
@@ -89,49 +119,49 @@ const AdminDashboard = () => {
   }, [salesDetail]);
 
   return (
-    <>
+    <div className="container flex flex-col ml-[5rem] text-white bg-black pt-[3rem] w-full pb-[3rem]">
       <AdminMenu />
 
-      <section className="xl:ml-[4rem] md:ml-[0rem]">
-        <div className="w-[80%] flex justify-around flex-wrap">
+      <section className="xl:ml-[0rem] md:ml-[0rem]">
+        <div className="w-full flex justify-center xl:ml-[7rem] md:ml-[6rem]">
           <div className="rounded-lg bg-black p-5 w-[20rem] mt-5">
-            <div className="font-bold rounded-full w-[3rem] bg-pink-500 text-center p-3">
-              $
+            <div className="font-bold rounded-full w-[3rem] bg-green-500 text-center p-3 text-xl">
+              ₹
             </div>
 
             <p className="mt-5">Sales</p>
             <h1 className="text-xl font-bold">
-              $ {isLoading ? <Loader /> : sales.totalSales.toFixed(2)}
+            ₹ {isLoading ? <Loader /> :  sales?.totalSales ? sales.totalSales.toFixed(2) : '0.00'}
             </h1>
           </div>
           <div className="rounded-lg bg-black p-5 w-[20rem] mt-5">
-            <div className="font-bold rounded-full w-[3rem] bg-pink-500 text-center p-3">
-              $
+            <div className="font-bold rounded-full w-[3rem] bg-green-500 text-center p-3 flex justify-center">
+            <AiOutlineUser size={22}/>
             </div>
 
             <p className="mt-5">Customers</p>
             <h1 className="text-xl font-bold">
-              $ {isLoading ? <Loader /> : customers?.length}
+             {isLoading ? <Loader /> : customers?.length}
             </h1>
           </div>
           <div className="rounded-lg bg-black p-5 w-[20rem] mt-5">
-            <div className="font-bold rounded-full w-[3rem] bg-pink-500 text-center p-3">
-              $
+            <div className="font-bold rounded-full w-[3rem] bg-green-500 flex justify-center p-3">
+            <AiOutlineInbox size={22} />
             </div>
 
             <p className="mt-5">All Orders</p>
             <h1 className="text-xl font-bold">
-              $ {isLoading ? <Loader /> : orders?.totalOrders}
+             {isLoading ? <Loader /> : orders?.totalOrders}
             </h1>
           </div>
         </div>
 
-        <div className="ml-[10rem] mt-[4rem]">
+        <div className="w-full mt-[4rem] xl:ml-[9rem] md:ml-[6rem]">
           <Chart
             options={state.options}
             series={state.series}
-            type="bar"
-            width="70%"
+            type="line"
+            width="80%"
           />
         </div>
 
@@ -139,7 +169,7 @@ const AdminDashboard = () => {
           <OrderList />
         </div>
       </section>
-    </>
+    </div>
   );
 };
 

@@ -28,7 +28,7 @@ const Profile = () => {
   const submitHandler = async (e) => {
     e.preventDefault();
     if (password !== confirmPassword) {
-      toast.error("Passwords do not match");
+      toast.error("Passwords do not match!");
     } else {
       try {
         const res = await updateProfile({
@@ -38,7 +38,7 @@ const Profile = () => {
           password,
         }).unwrap();
         dispatch(setCredentials({ ...res }));
-        toast.success("Profile updated successfully");
+        toast.success("Profile updated successfully!");
       } catch (err) {
         toast.error(err?.data?.message || err.error);
       }
@@ -46,9 +46,9 @@ const Profile = () => {
   };
 
   return (
-    <div className="bg-black text-white w-full h-[100vh] pt-[4rem] pb-[4rem]">
+    <div className="bg-black text-white w-full  pt-[4rem] pb-[4rem]">
     
-    <div className="container mx-auto p-4 mt-[6rem]">
+    <div className="container mx-auto p-4 mt-[2rem]">
        <AdminMenu />
       <div className="flex justify-center align-center md:flex md:space-x-4">
       <Toaster richColors position="top-center"/>

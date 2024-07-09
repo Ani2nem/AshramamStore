@@ -8,7 +8,7 @@ const OrderList = () => {
   const { data: orders, isLoading, error } = useGetOrdersQuery();
 
   return (
-    <>
+    <div className="flex-col mt-[4rem] text-white bg-black pt-[3rem] w-full pb-[3rem]">
       {isLoading ? (
         <Loader />
       ) : error ? (
@@ -50,15 +50,15 @@ const OrderList = () => {
                   {order.createdAt ? order.createdAt.substring(0, 10) : "N/A"}
                 </td>
 
-                <td>$ {order.totalPrice}</td>
+                <td>₹ {order.totalPrice}</td>
 
                 <td className="py-2">
                   {order.isPaid ? (
-                    <p className="p-1 text-center bg-green-400 w-[6rem] rounded-full">
-                      Completed
+                    <p className="p-1 text-center bg-green-500 w-[6rem] rounded-lg">
+                      Paid
                     </p>
                   ) : (
-                    <p className="p-1 text-center bg-red-400 w-[6rem] rounded-full">
+                    <p className="p-1 text-center bg-red-500 w-[6rem] rounded-lg">
                       Pending
                     </p>
                   )}
@@ -66,11 +66,11 @@ const OrderList = () => {
 
                 <td className="px-2 py-2">
                   {order.isDelivered ? (
-                    <p className="p-1 text-center bg-green-400 w-[6rem] rounded-full">
-                      Completed
+                    <p className="p-1 text-center bg-green-500 w-[6rem] rounded-lg">
+                      Delivered
                     </p>
                   ) : (
-                    <p className="p-1 text-center bg-red-400 w-[6rem] rounded-full">
+                    <p className="p-1 text-center bg-red-500 w-[6rem] rounded-lg">
                       Pending
                     </p>
                   )}
@@ -78,7 +78,7 @@ const OrderList = () => {
 
                 <td>
                   <Link to={`/order/${order._id}`}>
-                    <button>More</button>
+                    <button className='hover:text-green-500'>More</button>
                   </Link>
                 </td>
               </tr>
@@ -86,7 +86,7 @@ const OrderList = () => {
           </tbody>
         </table>
       )}
-    </>
+    </div >
   );
 };
 
