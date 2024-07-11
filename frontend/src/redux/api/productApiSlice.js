@@ -8,9 +8,17 @@ export const productApiSlice = apiSlice.injectEndpoints({
         url: `${PRODUCT_URL}`,
         params: { keyword },
       }),
+      transformResponse: (response) => {
+        if (!response || !response.products) {
+          console.error('Invalid response from server');
+          return { products: [], page: 1, pages: 1, hasMore: false };
+        }
+        return response;
+      },
       keepUnusedDataFor: 5,
       providesTags: ["Products"],
     }),
+    
 
     getProductById: builder.query({
       query: (productId) => `${PRODUCT_URL}/${productId}`,
