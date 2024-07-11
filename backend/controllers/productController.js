@@ -173,7 +173,7 @@ const fetchTopProducts = asyncHandler(async (req, res) => {
             res.json(products)
             
         } catch (error) {
-            res.staus(400).json(error.message)
+            res.status(400).json({ error: error.message })
         }
 });
 
@@ -182,7 +182,7 @@ const fetchNewProducts = asyncHandler(async (req, res) => {
         const products = await Product.find().sort({_id: -1}).limit(5);
         res.json(products)
     } catch (error) {
-        res.staus(400).json(error.message)
+        res.status(400).json({ error: error.message })
     }
 });
 

@@ -19,7 +19,7 @@ const createCategory = asyncHandler(async (req, res) => {
         res.json(category);
         
     }catch (error) {
-        return res.status(400).json(error);
+        return res.status(400).json({ error: error.message });
     }
 });
 
@@ -73,7 +73,7 @@ const getCategories = asyncHandler(async (req, res) => {
         res.json(all);
         
     } catch (error) {
-        res.status(400).json({message: message})
+        res.status(400).json({ error: error.message })
     }
 });
 
@@ -84,7 +84,7 @@ const readCategory = asyncHandler(async (req, res) => {
         const categoryDetails = await Category.findOne({_id: categoryId});  
         res.status(200).json(categoryDetails);
     } catch (error) {
-        res.status(404).json("Category Not found!")
+        res.status(404).json({ error: "Category Not found!" })
     }
 });
 

@@ -34,8 +34,7 @@ const createUser = asyncHandler(async (req, res) => {
     });
   } catch (error) {
     console.error('Error saving the user:', error);
-    res.status(400);
-    throw new Error('Invalid user Data');
+    res.status(400).json({ error: 'Invalid user Data' });
   }
 });
 
@@ -79,8 +78,13 @@ const logoutCurrentUser = asyncHandler(async(req, res) => {
 
 
 const getAllUsers = asyncHandler(async (req, res) => {
-    const users = await User.find({})
-    res.json(users);
+  try {
+      const users = await User.find({})
+      res.json(users);
+  } catch (error) {
+      res.status(500).json({message: "Internal Server Error!"});
+  }
+   
 });
 
 const getCurrentUserProfile = asyncHandler(async (req, res) => {
@@ -93,8 +97,7 @@ const getCurrentUserProfile = asyncHandler(async (req, res) => {
       email: user.email,
     });
   } else {
-    res.status(404);
-    throw new Error("User not found.");
+    res.status(404).json({ error: "User not found." });
   }
 });
 
@@ -122,8 +125,7 @@ const updateCurrentUserProfile = asyncHandler(async (req, res) =>{
     });
 
   } else {
-    res.status(404)
-    throw new Error("User not found");
+    res.status(404).json({ error: "User not found" });
   }
 });
 
@@ -140,8 +142,7 @@ const deleterUserById = asyncHandler(async (req, res) => {
     await User.deleteOne({_id: user._id})
     res.json({message: "User successfully removed!"});
   } else {
-      res.status(404)
-      throw new Error("User not found.");
+    res.status(404).json({ error: "User not found." });
   }
 });
 
@@ -152,8 +153,7 @@ const getUserById = asyncHandler(async (req, res) => {
   if (user){
     res.json(user)
   } else {
-    res.status(404)
-    throw new Error("User Not Found");
+    res.status(404).json({ error: "User Not Found" });
   }
 });
 
@@ -181,8 +181,7 @@ const updateUserById = asyncHandler(async (req, res) => {
       isAdmin: updatedUser.isAdmin,
     });
   } else {
-    res.status(404);
-    throw new Error("User not found.");
+    res.status(404).json({ error: "User not found." });
   }
 });
 
