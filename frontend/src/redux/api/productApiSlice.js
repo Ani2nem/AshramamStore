@@ -10,8 +10,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
       }),
       transformResponse: (response) => {
         if (!response || !response.products) {
-          console.error('Invalid response from server');
-          return { products: [], page: 1, pages: 1, hasMore: false };
+          throw new Error('Invalid response from server');
         }
         return response;
       },
