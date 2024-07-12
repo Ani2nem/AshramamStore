@@ -17,16 +17,16 @@ const AdminProductUpdate = () => {
 
   console.log(productData);
 
-  const [image, setImage] = useState(productData?.image || "");
-  const [name, setName] = useState(productData?.name || "");
+  const [image, setImage] = useState(productData.image || "");
+  const [name, setName] = useState(productData.name || "");
   const [description, setDescription] = useState(
-    productData?.description || ""
+    productData.description || ""
   );
-  const [price, setPrice] = useState(productData?.price || "");
-  const [category, setCategory] = useState(productData?.category || "");
-  const [quantity, setQuantity] = useState(productData?.quantity || "");
-  const [brand, setBrand] = useState(productData?.brand || "");
-  const [stock, setStock] = useState(productData?.countInStock);
+  const [price, setPrice] = useState(productData.price || "");
+  const [category, setCategory] = useState(productData.category || "");
+  const [quantity, setQuantity] = useState(productData.quantity || "");
+  const [brand, setBrand] = useState(productData.brand || "");
+  const [stock, setStock] = useState(productData.countInStock);
 
   // hook
   const navigate = useNavigate();
@@ -47,7 +47,7 @@ const AdminProductUpdate = () => {
       setName(productData.name);
       setDescription(productData.description);
       setPrice(productData.price);
-      setCategory(productData.category?._id);
+      setCategory(productData.category._id);
       setQuantity(productData.quantity);
       setBrand(productData.brand);
       setImage(productData.image);
@@ -232,7 +232,7 @@ const AdminProductUpdate = () => {
                   onChange={(e) => setCategory(e.target.value)}
                 >
                    <option value="" disabled>Select a category</option>
-                  {categories?.map((c) => (
+                  {categories.map((c) => (
                     <option key={c._id} value={c._id}>
                       {c.name}
                     </option>
