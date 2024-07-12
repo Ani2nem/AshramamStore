@@ -41,21 +41,30 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use(errorMiddleware);
 
 
-app.use(cors({
+const corsOptions = {
     origin: 'https://anirudh-e-store-frontend.onrender.com',
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+    allowedHeaders: ['Content-Type', 'Authorization'],
     credentials: true,
-  }));
+    optionsSuccessStatus: 200
+  };
+  
+  app.use(cors(corsOptions));
+  
+  // Handle preflight requests
+  app.options('*', cors(corsOptions));
 
-app.use((req, res, next) => {
+  app.use((req, res, next) => {
     res.header('Access-Control-Allow-Origin', 'https://anirudh-e-store-frontend.onrender.com');
-    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
-    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
     res.header('Access-Control-Allow-Credentials', true);
+    if (req.method === 'OPTIONS') {
+      return res.sendStatus(200);
+    }
     next();
-});
+  });
 
-app.options('*', cors());
 
 app.use((err, req, res, next) => {
     console.error(err.stack);
