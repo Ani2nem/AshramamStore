@@ -43,8 +43,25 @@ app.use(errorMiddleware);
 
 app.use(cors({
     origin: 'https://anirudh-e-store-frontend.onrender.com',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
-}));
+  }));
+
+app.use((req, res, next) => {
+    res.header('Access-Control-Allow-Origin', 'https://anirudh-e-store-frontend.onrender.com');
+    res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    res.header('Access-Control-Allow-Credentials', true);
+    next();
+});
+
+app.options('*', cors());
+
+app.use((err, req, res, next) => {
+    console.error(err.stack);
+    res.status(500).send('Something broke!');
+  });
+
 
 
 // error handling
@@ -52,13 +69,14 @@ app.use((req, res, next) => {
     res.status(404).json({ message: "Route not found" });
   });
 
-  app.use((req, res, next) => {
-    console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
-    next();
-  });
+app.use((req, res, next) => {
+  console.log(`${new Date().toISOString()} - ${req.method} ${req.url}`);
+  console.log('Headers:', req.headers);
+  next();
+});
 
-  app.get('/health', (req, res) => {
-    res.status(200).json({ status: 'OK' });
+app.get('/health', (req, res) => {
+    res.json({ status: 'OK' });
   });
 
 
