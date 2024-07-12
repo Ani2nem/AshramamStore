@@ -19,10 +19,10 @@ connectDB();
 const app = express();
 
 import cors from 'cors';
-app.use(cors());
 
+// Use this single CORS configuration
 app.use(cors({
-  origin: '*',
+  origin: '*',  // This allows all origins. In production, you might want to be more specific.
   credentials: true,
 }));
 

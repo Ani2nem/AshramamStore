@@ -11,6 +11,11 @@ const router = express.Router();
 router.route('/').get(fetchProducts).
 post(authenticate, authorizeAdmin, formidable(), addProduct);
 
+router.get('/', (req, res, next) => {
+    console.log('Received request for products');
+    // Your existing handler code here
+});
+
 router.route('/allproducts').get(fetchAllProducts);
 router.route('/:id/reviews').post( authenticate, authorizeAdmin,  checkId , addProductReview);
 
