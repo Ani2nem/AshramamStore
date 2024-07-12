@@ -104,7 +104,7 @@ export const productApiSlice = apiSlice.injectEndpoints({
           }),
         }),
       }; // return statment
-    }, // endpoints (builder)
+  }, // endpoints (builder)
 }); // product slice
 
 console.log('Product API slice endpoints:', Object.keys(productApiSlice.endpoints));

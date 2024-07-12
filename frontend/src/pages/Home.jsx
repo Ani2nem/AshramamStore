@@ -7,36 +7,10 @@ import Product from "./Products/Product.jsx";
 
 const Home = () => {
   const { keyword } = useParams();
-  console.log('Keyword:', keyword);
-   // Log the useGetProductsQuery function to ensure it's imported correctly
-   console.log('useGetProductsQuery:', useGetProductsQuery);
-
-   // Call the query hook
-  const result = useGetProductsQuery({ keyword });
-
-  useEffect(() => {
-    console.log('Query Result:', result);
-  }, [result]);
-
-  if (result.isLoading) {
-    console.log('Query is loading');
-    return <div>Loading...</div>;
-  }
-
-  if (result.isError) {
-    console.error('Query error:', result.error);
-    return <div>Error: {result.error.message}</div>;
-  }
-
-  if (result.data) {
-    console.log('Query data:', result.data);
-  }
-
   const { data, isLoading, isError } = useGetProductsQuery({ keyword });
-
-  console.log('Rendering Home component');
-  console.log('API Call Status:', { isLoading, isError, data, error });
-
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error: {isError.message}</div>;
+  if (!data || !data.products) return <div>No products found</div>;
 
   return (
     <div className="bg-black w-full -mt-[5rem]">
