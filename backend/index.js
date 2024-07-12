@@ -17,16 +17,17 @@ const port = process.env.PORT || 5001;
 connectDB();
 
 const app = express();
+
 /*
 import cors from 'cors';
 app.use(cors());
 
 app.use(cors({
-  origin: 'https://anirudh-e-store-frontend.onrender.com',
+  origin: '*',
   credentials: true,
 }));
-
 */
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
