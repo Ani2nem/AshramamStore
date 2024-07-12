@@ -18,15 +18,15 @@ connectDB();
 
 const app = express();
 
-/*
+
 import cors from 'cors';
 app.use(cors());
 
 app.use(cors({
-  origin: '*',
+  origin: 'https://anirudh-e-store-frontend.onrender.com/', // 
   credentials: true,
 }));
-*/
+
 
 
 app.use(express.json());
