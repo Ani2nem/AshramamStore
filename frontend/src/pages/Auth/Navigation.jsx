@@ -105,7 +105,7 @@ const Navigation = () => {
           className="flex items-center text-gray-800 focus:outline-none"
         >
           {userInfo ? (
-            <span className="text-white text-lg">{userInfo.username.charAt(0).toUpperCase() + userInfo.username.slice(1)}</span>
+            <span className="text-white text-lg">{userInfo.username + userInfo.username.slice(1)}</span>
           ) : (
             <></>
           )}
