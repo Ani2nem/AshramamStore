@@ -14,10 +14,7 @@ import {
 
 const ProductCarousel = () => {
   const { data: products, isLoading, error } = useGetTopProductsQuery();
-  if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
-  if (!data || !data.products) return <div>No products found</div>;
-
+  
   const settings = {
     dots: false,
     infinite: true,

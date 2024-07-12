@@ -9,7 +9,7 @@ const Home = () => {
   const { keyword } = useParams();
   const { data, isLoading, isError } = useGetProductsQuery({ keyword });
   if (isLoading) return <div>Loading...</div>;
-  if (error) return <div>Error: {error.message}</div>;
+  if (isError) return <div>Error: {isError.message}</div>;
   if (!data || !data.products) return <div>No products found</div>;
 
   return (

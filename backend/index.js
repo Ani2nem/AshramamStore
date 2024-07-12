@@ -3,6 +3,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
 
+
 import userRoutes from './routes/userRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
 import productRoutes from './routes/productRoutes.js';
@@ -16,7 +17,16 @@ const port = process.env.PORT || 5001;
 connectDB();
 
 const app = express();
+/*
+import cors from 'cors';
+app.use(cors());
 
+app.use(cors({
+  origin: 'https://anirudh-e-store-frontend.onrender.com',
+  credentials: true,
+}));
+
+*/
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
