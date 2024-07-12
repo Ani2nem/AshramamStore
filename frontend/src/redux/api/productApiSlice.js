@@ -5,11 +5,15 @@ export const productApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
 
     getProducts: builder.query({
-      query: ({ keyword }) => ({
-        url: `${PRODUCT_URL}`,
-        params: { keyword },
-      }),
+      query: ({ keyword }) => {
+        console.log('Making getProducts query with keyword:', keyword);
+        return {
+          url: `${PRODUCT_URL}`,
+          params: { keyword },
+        };
+      },
       transformResponse: (response) => {
+        console.log('Received response:', response);
         if (!response || !response.products) {
           throw new Error('Invalid response from server');
         }

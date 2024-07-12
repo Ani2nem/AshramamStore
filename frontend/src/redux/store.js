@@ -1,13 +1,15 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { setupListeners } from "@reduxjs/toolkit/query/react";
-import { apiSlice } from "./api/apiSlice";
-import authReducer from "./features/auth/authSlice";
-import favoritesReducer from "../redux/features/favorites/favoriteSlice";
-import cartSliceReducer from "../redux/features/cart/cartSlice";
-import shopReducer from "../redux/features/shop/shopSlice";
-import { getFavoritesFromLocalStorage } from "../Utils/localStorage";
+import { apiSlice } from "./api/apiSlice.js";
+import authReducer from "./features/auth/authSlice.js";
+import favoritesReducer from "../redux/features/favorites/favoriteSlice.js";
+import cartSliceReducer from "../redux/features/cart/cartSlice.js";
+import shopReducer from "../redux/features/shop/shopSlice.js";
+import { getFavoritesFromLocalStorage } from "../Utils/localStorage.js";
 
 const initialFavorites = getFavoritesFromLocalStorage() || [];
+
+console.log('Configuring Redux store');
 
 const store = configureStore({
   reducer: {
@@ -27,5 +29,9 @@ const store = configureStore({
   devTools: true,
 });
 
+console.log('Redux store configured');
+
 setupListeners(store.dispatch);
+console.log('Redux listeners set up');
+
 export default store;

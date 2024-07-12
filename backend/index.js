@@ -23,7 +23,7 @@ import cors from 'cors';
 app.use(cors());
 
 app.use(cors({
-  origin: 'https://anirudh-e-store-frontend.onrender.com/',
+  origin: 'https://anirudh-e-store-frontend.onrender.com',
   credentials: true,
 }));
 
