@@ -8,6 +8,9 @@ import Product from "./Products/Product";
 const Home = () => {
   const { keyword } = useParams();
   const { data, isLoading, isError } = useGetProductsQuery({ keyword });
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (!data || !data.products) return <div>No products found</div>;
 
   return (
     <div className="bg-black w-full -mt-[5rem]">

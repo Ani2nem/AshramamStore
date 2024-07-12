@@ -16,12 +16,16 @@ const ProductTabs = ({
   product,
 }) => {
   const { data, isLoading } = useGetTopProductsQuery();
+  
 
   const [activeTab, setActiveTab] = useState(1);
 
   if (isLoading) {
     return <Loader />;
   }
+  if (error) return <div>Error: {error.message}</div>;
+  if (!data || !data.products) return <div>No products found</div>;
+  
 
   const handleTabClick = (tabNumber) => {
     setActiveTab(tabNumber);

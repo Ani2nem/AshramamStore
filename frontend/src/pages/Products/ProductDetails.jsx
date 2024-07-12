@@ -38,6 +38,9 @@ const ProductDetails = () => {
   } = useGetProductDetailsQuery(productId, {
     refetchOnMountOrArgChange: true,
   });
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (!data || !data.products) return <div>No products found</div>;
 
   const { userInfo } = useSelector((state) => state.auth);
 

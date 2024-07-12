@@ -36,7 +36,11 @@ const Product = () => {
     refetch,
     error,
   } = useGetProductDetailsQuery(productId);
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error: {error.message}</div>;
+  if (!data || !data.products) return <div>No products found</div>;
 
+  
   const { userInfo } = useSelector((state) => state.auth);
 
   const [createReview, { isLoading: loadingProductReview }] =

@@ -25,6 +25,7 @@ const Shop = () => {
     checked,
     radio,
   });
+  
 
   useEffect(() => {
     if (!categoriesQuery.isLoading) {
