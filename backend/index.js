@@ -2,7 +2,6 @@ import path from 'path';
 import express from 'express';
 import dotenv from 'dotenv';
 import cookieParser from 'cookie-parser';
-import cors from 'cors';
 
 import userRoutes from './routes/userRoutes.js';
 import categoryRoutes from './routes/categoryRoutes.js';
@@ -17,7 +16,7 @@ const port = process.env.PORT || 5001;
 connectDB();
 
 const app = express();
-app.use(cors());
+
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
