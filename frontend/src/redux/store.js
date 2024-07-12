@@ -31,6 +31,7 @@ const store = configureStore({
 });
 
 console.log('Redux store configured');
+console.log('Store reducer keys:', Object.keys(store.getState()));
 
 setupListeners(store.dispatch);
 console.log('Redux listeners set up');
