@@ -8,9 +8,17 @@ import Product from "./Products/Product.jsx";
 const Home = () => {
   const { keyword } = useParams();
   const { data, isLoading, isError } = useGetProductsQuery({ keyword });
-  if (isLoading) return <div>Loading...</div>;
-  if (isError) return <div>Error: {isError.message}</div>;
+
+  console.log('Rendering Home component');
+  console.log('API Call Status:', { isLoading, isError, data, error });
+
+   if (isLoading) return <div>Loading...</div>;
+  if (isError) {
+    console.error('Error fetching products:', error);
+    return <div>Error: {error.message}</div>;
+  }
   if (!data || !data.products) return <div>No products found</div>;
+
 
   return (
     <div className="bg-black w-full -mt-[5rem]">

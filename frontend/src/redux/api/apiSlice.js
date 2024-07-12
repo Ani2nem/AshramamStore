@@ -11,3 +11,5 @@ export const apiSlice = createApi({
   tagTypes: ["Product", "Order", "User", "Category"],
   endpoints: (builder) => ({}),
 });
+
+console.log('Base URL:', BASE_URL);  // Log the base URL to ensure it's correct
