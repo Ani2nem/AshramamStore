@@ -7,6 +7,7 @@ import cartSliceReducer from "../redux/features/cart/cartSlice.js";
 import shopReducer from "../redux/features/shop/shopSlice.js";
 import { getFavoritesFromLocalStorage } from "../Utils/localStorage.js";
 
+
 const initialFavorites = getFavoritesFromLocalStorage() || [];
 
 console.log('Configuring Redux store');
