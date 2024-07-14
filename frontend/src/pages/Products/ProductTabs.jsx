@@ -15,54 +15,18 @@ const ProductTabs = ({
   setComment,
   product,
 }) => {
-  const { data, isLoading } = useGetTopProductsQuery();
-  
+  const { data, isLoading, error } = useGetTopProductsQuery();
 
   const [activeTab, setActiveTab] = useState(1);
-
-  if (isLoading) {
-    return <Loader />;
-  }
-  if (error) return <div>Error: {error.message}</div>;
-  if (!data || !data.products) return <div>No products found</div>;
-  
 
   const handleTabClick = (tabNumber) => {
     setActiveTab(tabNumber);
   };
 
-  return (
-    <div className="flex flex-col md:flex-row">
-      <section className="mr-[3rem]">
-        <div
-          className={`flex-1 p-8 cursor-pointer text-lg hover:text-green-500 ${
-            activeTab === 1 ? "font-bold text-green-600" : ""
-          }`}
-          onClick={() => handleTabClick(1)}
-        >
-          Write Your Review
-        </div>
-        <div
-          className={`flex-1 p-8 cursor-pointer text-lg hover:text-green-500 ${
-            activeTab === 2 ? "font-bold  text-green-600" : ""
-          }`}
-          onClick={() => handleTabClick(2)}
-        >
-          All Reviews
-        </div>
-        <div
-          className={`flex-1 p-8 cursor-pointer text-lg  hover:text-green-500 ${
-            activeTab === 3 ? "font-bold  text-green-600" : ""
-          }`}
-          onClick={() => handleTabClick(3)}
-        >
-          Related Products
-        </div>
-      </section>
-
-      {/* Second Part */}
-      <section>
-        {activeTab === 1 && (
+  const renderTabContent = () => {
+    switch (activeTab) {
+      case 1:
+        return (
           <div className="mt-4">
             {userInfo ? (
               <form onSubmit={submitHandler}>
@@ -70,7 +34,6 @@ const ProductTabs = ({
                   <label htmlFor="rating" className="block text-xl mb-2">
                     Rating
                   </label>
-
                   <select
                     id="rating"
                     required
@@ -86,12 +49,10 @@ const ProductTabs = ({
                     <option value="5">Exceptional</option>
                   </select>
                 </div>
-
                 <div className="my-2">
                   <label htmlFor="comment" className="block text-xl mb-2">
                     Comment
                   </label>
-
                   <textarea
                     id="comment"
                     rows="3"
@@ -115,14 +76,11 @@ const ProductTabs = ({
               </p>
             )}
           </div>
-        )}
-      </section>
-
-      <section>
-        {activeTab === 2 && (
+        );
+      case 2:
+        return (
           <div>
             <div>{product.reviews.length === 0 && <p>No Reviews</p>}</div>
-
             <div>
               {product.reviews.map((review) => (
                 <div
@@ -135,18 +93,15 @@ const ProductTabs = ({
                       {review.createdAt.substring(0, 10)}
                     </p>
                   </div>
-
                   <p className="my-4">{review.comment}</p>
                   <Ratings value={review.rating} />
                 </div>
               ))}
             </div>
           </div>
-        )}
-      </section>
-
-      <section>
-        {activeTab === 3 && (
+        );
+      case 3:
+        return (
           <section className="flex flex-wrap">
             {!data ? (
               <Loader />
@@ -158,8 +113,53 @@ const ProductTabs = ({
               ))
             )}
           </section>
-        )}
+        );
+      default:
+        return null;
+    }
+  };
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (error) {
+    return <div>Error: {error.message}</div>;
+  }
+
+  if (!data || !data.products) {
+    return <div>No products found</div>;
+  }
+
+  return (
+    <div className="flex flex-col md:flex-row">
+      <section className="mr-[3rem]">
+        <div
+          className={`flex-1 p-8 cursor-pointer text-lg hover:text-green-500 ${
+            activeTab === 1 ? "font-bold text-green-600" : ""
+          }`}
+          onClick={() => handleTabClick(1)}
+        >
+          Write Your Review
+        </div>
+        <div
+          className={`flex-1 p-8 cursor-pointer text-lg hover:text-green-500 ${
+            activeTab === 2 ? "font-bold text-green-600" : ""
+          }`}
+          onClick={() => handleTabClick(2)}
+        >
+          All Reviews
+        </div>
+        <div
+          className={`flex-1 p-8 cursor-pointer text-lg hover:text-green-500 ${
+            activeTab === 3 ? "font-bold text-green-600" : ""
+          }`}
+          onClick={() => handleTabClick(3)}
+        >
+          Related Products
+        </div>
       </section>
+      <section>{renderTabContent()}</section>
     </div>
   );
 };
