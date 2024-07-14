@@ -20,12 +20,13 @@ const app = express();
 
 import cors from 'cors';
 
-// Use this single CORS configuration
-app.use(cors({
-  origin: '*',  // This allows all origins. In production, you might want to be more specific.
+const corsOptions = {
+  origin: process.env.FRONTEND_URL,
   credentials: true,
-}));
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+};
 
+app.use(cors(corsOptions));
 
 
 app.use(express.json());
