@@ -38,32 +38,33 @@ const ProductDetails = () => {
   } = useGetProductDetailsQuery(productId, {
     refetchOnMountOrArgChange: true,
   });
+
   if (isLoading) return <div>Loading...</div>;
   if (error) return <div>Error: {error.message}</div>;
-  if (!data || !data.products) return <div>No products found</div>;
+  if (!product) return <div>No product found</div>;  // Updated line
 
   const { userInfo } = useSelector((state) => state.auth);
 
   const [createReview, { isLoading: loadingProductReview }] =
     useCreateReviewMutation();
 
-    const submitHandler = async (e) => {
-      e.preventDefault();
-    
-      try {
-        await createReview({
-          productId,
-          rating,
-          comment,
-        }).unwrap();
-        await refetch(); 
-        toast.success("Review created successfully");
-        setRating(0);
-        setComment("");
-      } catch (error) {
-        toast.error(error.message || "You've already reviewed this product!");
-      }
-    };
+  const submitHandler = async (e) => {
+    e.preventDefault();
+
+    try {
+      await createReview({
+        productId,
+        rating,
+        comment,
+      }).unwrap();
+      await refetch();
+      toast.success("Review created successfully");
+      setRating(0);
+      setComment("");
+    } catch (error) {
+      toast.error(error.message || "You've already reviewed this product!");
+    }
+  };
 
   const addToCartHandler = () => {
     dispatch(addToCart({ ...product, qty }));
@@ -71,15 +72,14 @@ const ProductDetails = () => {
   };
 
   return (
-    < div className="mt-[2rem] bg-black text-white">
-     <Toaster richColors position="top-center" />
+    <div className="mt-[2rem] bg-black text-white">
+      <Toaster richColors position="top-center" />
       <button className="mt-[2rem]">
         <Link
           to="/"
           className="text-white font-semibold hover:underline hover:text-orange-500 ml-[1.5rem]"
         >
-          
-           Back
+          Back
         </Link>
       </button>
 
